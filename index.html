@@ -1132,7 +1132,7 @@ function sheetRows() {
   return { 'الملخص': summary, 'المعايير': criteria, 'المعالم': ms, 'الميزانية': bud, 'التمديدات': ext, 'العوائق': blk, 'مقارنة المشاريع': cmp };
 }
 // Excel in the Nuzli identity: logo and report header on every sheet, navy table headers, zebra rows,
-// coloured result cells, right-to-left sheets, frozen headers and filters.
+// coloured result cells, right-to-left sheets and filters (no frozen panes: project rule 5).
 async function exportXlsx() {
   if (!window.ExcelJS) { toast('مكتبة Excel لم تُحمَّل بعد، حاول بعد لحظة.'); return; }
   const ev = CUR, p = ev.p, k = ev.k;
@@ -1183,7 +1183,8 @@ async function exportXlsx() {
     });
     return { row: row + 2, headRow, lastRow: row };
   };
-  const finish = (ws, t, cols) => { ws.views = [{ rightToLeft: true, showGridLines: false, state: 'frozen', ySplit: t.headRow }]; ws.autoFilter = { from: { row: t.headRow, column: 1 }, to: { row: t.lastRow, column: cols } }; };
+  // Project rule 5: no frozen panes in any exported Excel file; sheets stay right-to-left.
+const finish = (ws, t, cols) => { ws.autoFilter = { from: { row: t.headRow, column: 1 }, to: { row: t.lastRow, column: cols } }; };
   const MONEY = '#,##0 "ر.س"', R2 = '0.00', R1 = '0.0';
 
   // 1) Summary: the verdict, the axes and the six indicators, then the weights and thresholds used.
