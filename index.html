@@ -75,6 +75,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* stepper */
 .steps { display: flex; gap: 8px; flex-wrap: wrap; }
+.steps[hidden] { display: none !important; }
 .step { display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--dim); cursor: pointer; }
 .step b { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--panel2); font-size: 12px; }
 .step[aria-current="step"] { border-color: var(--primary); color: var(--accent); font-weight: 600; }
@@ -132,6 +133,19 @@ button, input, select { font: inherit; color: inherit; }
 .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; margin-top: 10px; }
 .gloss div { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; font-size: 12.5px; line-height: 1.7; }
 .gloss span { color: var(--dim); }
+.sub-nav { padding-inline-start: 34px !important; font-size: 13px; }
+.guide-page { display: grid; gap: 16px; }
+.ghead { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.ghead > div { display: grid; gap: 10px; flex: 1 1 420px; }
+.toc { display: flex; flex-wrap: wrap; gap: 6px; }
+.gsec { scroll-margin-top: 80px; display: grid; gap: 10px; }
+.gsec p { margin: 0; line-height: 1.9; }
+.formula { display: grid; gap: 8px; }
+.formula div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 10px; background: var(--tint); border: 1px solid var(--tint2); border-radius: 10px; padding: 10px 12px; }
+.formula span { color: var(--dim); font-size: 13px; }
+.example { background: var(--panel2); border-radius: 10px; padding: 10px 12px; line-height: 1.9; font-size: 13.5px; }
+.gtable { font-size: 12.5px; }
+@media (max-width: 600px) { .formula div { grid-template-columns: 1fr; gap: 2px; } }
 .adv summary { cursor: pointer; font-weight: 600; color: var(--accent); }
 .thr { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px 16px; }
 .thr label { display: grid; gap: 4px; font-size: 12.5px; color: var(--dim); }
@@ -245,6 +259,31 @@ td.nw { white-space: nowrap; }
 /* export capture: fixed width, light */
 .capturing .report { width: 1040px; padding: 28px; background: #ffffff; }
 .pdf-only { display: none; }
+.pdfdoc { position: fixed; top: 0; left: -14000px; display: grid; gap: 20px; direction: rtl; font-family: var(--font); color: var(--ink); }
+.pdfpage { width: 1000px; height: 1414px; background: #ffffff; box-sizing: border-box; padding: 34px 40px 26px; display: flex; flex-direction: column; gap: 16px; }
+.pp-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; padding-bottom: 14px; border-bottom: 3px solid #164076; }
+.pp-head img { height: 40px; }
+.pp-title { display: grid; gap: 2px; }
+.pp-title small { color: var(--dim); font-size: 12px; }
+.pp-title b { font-size: 19px; font-weight: 600; color: #164076; line-height: 1.4; }
+.pp-meta { display: grid; gap: 4px; justify-items: end; font-size: 12px; color: var(--dim); }
+.pp-grade { font-weight: 600; padding: 2px 10px; border-radius: 999px; }
+.pp-grade.ok { background: var(--p-ok-b); color: var(--p-ok-t); } .pp-grade.warn { background: var(--p-warn-b); color: var(--p-warn-t); } .pp-grade.bad { background: var(--p-bad-b); color: var(--p-bad-t); }
+.pp-body { flex: 1; min-height: 0; overflow: hidden; display: grid; gap: 14px; align-content: start; }
+.pp-body .card { box-shadow: none; padding: 16px; }
+.pp-body table { min-width: 0; }
+.pp-body tr { break-inside: avoid; }
+.pp-body .kpis { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.pp-body .kpi { padding: 10px 10px 12px; gap: 6px; }
+.pp-body .kpi .kh { flex-direction: column; align-items: flex-start; gap: 4px; }
+.pp-body .kpi .l { font-size: 11px; }
+.pp-body .kpi .v { font-size: 19px; }
+.pp-body .kpi .n { font-size: 10px; line-height: 1.5; }
+.pp-body .r-head .lede { font-size: 14px; }
+.pp-body .meta { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 14px; }
+.pp-body .bud { gap: 9px; }
+.pp-body .verdict { gap: 22px; }
+.pp-foot { display: flex; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--dim); border-top: 1px solid var(--line); padding-top: 10px; }
 .capturing .pdf-only { display: block; }
 .capturing .no-pdf { display: none !important; }
 
@@ -300,7 +339,8 @@ td.nw { white-space: nowrap; }
       <button type="button" data-inert="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span>المحافظ</span></button>
       <button type="button" data-inert="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg><span>مهامي</span></button>
       <button type="button" data-inert="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 17v-4M12 17v-6M15 17v-2"/></svg><span>التقارير</span></button>
-      <button type="button" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span>الامتثال</span><span class="new">جديد</span></button>
+      <button type="button" id="side-comp" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span>الامتثال</span><span class="new">جديد</span></button>
+      <button type="button" class="sub-nav" id="side-guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg><span>دليل الاستخدام</span></button>
       <button type="button" data-inert="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 8h10M7 12h4m1 8-4-4H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2z"/></svg><span>مركز التواصل</span></button>
     </nav>
   </aside>
@@ -319,8 +359,7 @@ td.nw { white-space: nowrap; }
     <main class="content" id="content">
       <div class="pagehead">
         <div>
-          <h1>الامتثال</h1>
-          <p>اختر المشروع، وحدّد أوزان محاور الامتثال وعتباتها، ثم أنشئ لوحة الامتثال وصدّرها. الأرقام تُحسب مباشرة من بيانات المشروع وتتغيّر مع كل وزن تعدّله.</p>
+          <h1 id="page-title">الامتثال</h1>
         </div>
         <div class="steps" role="list" aria-label="خطوات">
           <button class="step" type="button" data-step="1" role="listitem"><b>١</b>المشروع</button>
@@ -333,7 +372,7 @@ td.nw { white-space: nowrap; }
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
 <script>
@@ -582,7 +621,11 @@ document.getElementById('menu-btn').addEventListener('click', () => { side.class
 scrim.addEventListener('click', closeMenu);
 document.querySelectorAll('.step').forEach((b) => b.addEventListener('click', () => go(Number(b.dataset.step))));
 
+function openGuide() { st.guide = true; save(); render(); window.scrollTo({ top: 0 }); closeMenu(); }
+document.getElementById('side-guide').addEventListener('click', openGuide);
+document.getElementById('side-comp').addEventListener('click', () => { closeMenu(); go(st.step || 1); });
 function go(step) {
+  st.guide = false;
   if (step >= 2 && !st.pid) { toast('اختر مشروعًا أولًا.'); step = 1; }
   if (step === 3 && sumW() !== 100) { toast('مجموع أوزان المحاور يجب أن يكون 100.'); step = 2; }
   st.step = step; save(); render();
@@ -599,6 +642,12 @@ function render() {
   });
   sideProj.querySelectorAll('button').forEach((b) => b.toggleAttribute('aria-current', b.dataset.pid === st.pid && st.step > 1));
   const p = PROJECTS.find((x) => x.id === st.pid);
+  const g = !!st.guide;
+  document.querySelector('.steps').hidden = g;
+  document.getElementById('page-title').textContent = g ? 'دليل الاستخدام' : 'الامتثال';
+  document.getElementById('side-guide').toggleAttribute('aria-current', g);
+  document.getElementById('side-comp').toggleAttribute('aria-current', !g);
+  if (g) { document.getElementById('crumb').textContent = 'دليل الاستخدام'; document.getElementById('view').replaceChildren(viewGuide()); return; }
   document.getElementById('crumb').textContent = st.step === 1 ? 'اختيار المشروع' : st.step === 2 ? `المعايير والأوزان · ${p.name}` : `لوحة الامتثال · ${p.name}`;
   const view = document.getElementById('view');
   view.replaceChildren(st.step === 1 ? viewProjects() : st.step === 2 ? viewWeights(p) : viewReport(p));
@@ -609,7 +658,7 @@ function render() {
 function viewProjects() {
   return h('div', { class: 'card' },
     h('h2', {}, 'اختر المشروع'),
-    h('p', { class: 'sub', style: 'margin-bottom:14px' }, `أربعة مشاريع وهمية بحالات مختلفة. الدرجة المعروضة محسوبة بالأوزان الحالية حتى ${fd(AS_OF)}.`),
+    h('div', { style: 'height:12px' }),
     h('div', { class: 'projects' }, PROJECTS.map((p) => {
       const ev = evaluate(p, st);
       return h('button', { type: 'button', class: 'pcard', 'aria-pressed': String(st.pid === p.id), onclick: () => { st.pid = p.id; go(2); } },
@@ -644,7 +693,7 @@ function viewWeights(p) {
   right.append(h('h3', {}, 'مجموع الأوزان'), sumEl, barEl, legEl, msgEl, normBtn,
     h('hr', { style: 'border:0;border-top:1px solid var(--line);width:100%' }),
     h('h3', {}, 'معاينة الدرجة'), h('p', { class: 'sub' }, p.name), h('div', { class: 'row' }, scoreEl, gradeEl),
-    h('p', { class: 'sub' }, 'تتغيّر الدرجة فورًا مع كل وزن أو عتبة تعدّلها.'), genBtn);
+    genBtn);
   const refreshRight = () => {
     const total = sumW();
     const ev = evaluate(p, st);
@@ -652,7 +701,7 @@ function viewWeights(p) {
     sumEl.className = `sum tab ${total === 100 ? 'ok-t' : 'bad-t'}`;
     barEl.replaceChildren(...AXES.map((a) => h('i', { style: `width:${Math.max(0, st.w[a.id])}%;background:${a.color}` })));
     legEl.replaceChildren(...AXES.map((a) => h('span', {}, h('i', { style: `background:${a.color}` }), `${a.name} ${st.w[a.id]}`)));
-    msgEl.textContent = total === 100 ? 'المجموع صحيح.' : `عدّل الأوزان حتى يصبح المجموع 100 (${total > 100 ? 'زائد' : 'ناقص'} ${Math.abs(100 - total)}).`;
+    msgEl.textContent = total === 100 ? '' : `عدّل الأوزان حتى يصبح المجموع 100 (${total > 100 ? 'زائد' : 'ناقص'} ${Math.abs(100 - total)}).`;
     msgEl.className = `sub ${total === 100 ? '' : 'bad-t'}`;
     normBtn.hidden = total === 100;
     scoreEl.textContent = nf.format(ev.score);
@@ -660,32 +709,30 @@ function viewWeights(p) {
     gradeEl.className = `pill ${ev.grade}`;
     genBtn.disabled = total !== 100;
   };
-  const refreshAll = () => { save(); const g = left.querySelector('.guide'); if (g) { const n = scoringGuide(); n.open = g.open; g.replaceWith(n); } left.querySelectorAll('[data-axis-in]').forEach((i) => { i.value = st.w[i.dataset.axisIn]; }); left.querySelectorAll('[data-share]').forEach(updShare); left.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.preset === st.preset))); refreshRight(); };
+  const refreshAll = () => { save(); left.querySelectorAll('[data-axis-in]').forEach((i) => { i.value = st.w[i.dataset.axisIn]; }); left.querySelectorAll('[data-share]').forEach(updShare); left.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.preset === st.preset))); refreshRight(); };
   const updShare = (el) => { const cr = CRITERIA.find((c) => c.id === el.dataset.share); const impSum = CRITERIA.filter((x) => x.axis === cr.axis).reduce((s, x) => s + st.imp[x.id], 0); el.textContent = `${nf.format((st.w[cr.axis] * st.imp[cr.id]) / impSum)} نقطة`; };
   const setW = (axis, v) => { st.w[axis] = Math.max(0, Math.min(100, Math.round(toNum(v) || 0))); st.preset = 'custom'; refreshAll(); };
 
   left.append(...[
     h('h2', {}, 'المعايير والأوزان'),
-    h('p', { class: 'sub', style: 'margin-bottom:12px' }, 'ابدأ بنموذج جاهز ثم عدّل. وزن كل محور يتوزّع على معاييره حسب أهميتها، والمعيار الممتثل يأخذ نصيبه كاملًا، والملاحظة نصفه، والمخالفة صفرًا.'),
+    h('div', { style: 'height:10px' }),
     h('div', { class: 'presets', role: 'group', 'aria-label': 'نماذج الأوزان' }, Object.entries(PRESETS).map(([k, v]) => h('button', { type: 'button', class: 'chip', 'data-preset': k, 'aria-pressed': String(st.preset === k), onclick: () => { st.preset = k; st.w = { ...v.w }; refreshAll(); } }, v.name))),
-    h('div', { style: 'height:14px' }),
-    scoringGuide(),
     h('div', { style: 'height:14px' }),
     AXES.map((a) => {
       const range = h('input', { type: 'range', min: '0', max: '60', step: '1', value: st.w[a.id], 'aria-label': `وزن ${a.name}`, 'data-axis-in': a.id, oninput: (e) => setW(a.id, e.target.value) });
       const num = h('input', { type: 'text', inputmode: 'numeric', dir: 'ltr', autocomplete: 'off', class: 'num-in tab', value: st.w[a.id], 'aria-label': `وزن ${a.name} رقمًا`, 'data-axis-in': a.id, id: `w-${a.id}`, onchange: (e) => setW(a.id, e.target.value) });
       return h('div', { class: 'axis' },
-        h('div', { class: 'axis-head' }, h('div', { class: 'nm' }, h('b', {}, a.name), h('span', { class: 'sub' }, a.hint)), range, num),
-        h('details', {}, h('summary', {}, `المعايير (${CRITERIA.filter((c) => c.axis === a.id).length}): ماذا تقيس وكيف تُحسب`),
+        h('div', { class: 'axis-head' }, h('div', { class: 'nm' }, h('b', {}, a.name)), range, num),
+        h('details', {}, h('summary', {}, `المعايير (${CRITERIA.filter((c) => c.axis === a.id).length})`),
           CRITERIA.filter((c) => c.axis === a.id).map((c) => h('div', { class: 'crit' },
-            h('span', {}, h('b', { class: 'tab' }, c.id), ' · ', c.name, h('span', { class: 'how' }, EXPLAIN[c.id].what), h('span', { class: 'how' }, h('b', {}, 'الاحتساب: '), EXPLAIN[c.id].how)),
+            h('span', {}, h('b', { class: 'tab' }, c.id), ' · ', c.name),
             h('select', { class: 'sel', id: `imp-${c.id}`, 'aria-label': `أهمية ${c.name}`, onchange: (e) => { st.imp[c.id] = Number(e.target.value); refreshAll(); } },
               [1, 2, 3].map((v) => { const o = h('option', { value: String(v) }, `أهمية ${IMP[v]}`); if (st.imp[c.id] === v) o.selected = true; return o; })),
             h('span', { class: 'share tab', 'data-share': c.id })))));
     }),
     h('div', { style: 'height:14px' }),
     h('details', { class: 'adv' }, h('summary', {}, 'إعدادات متقدمة: العتبات'),
-    h('p', { class: 'sub', style: 'margin:8px 0 10px' }, 'الحدود التي يُحكم بها على كل معيار، وحدّا الحكم العام. القيم المقترحة تكفي لأغلب الجهات.'),
+    h('div', { style: 'height:10px' }),
     h('div', { class: 'thr' }, [
       ['spiTarget', 'هدف مؤشر الجدول (SPI)', 0.8, 1.1, 0.01], ['cpiTarget', 'هدف مؤشر التكلفة (CPI)', 0.8, 1.1, 0.01],
       ['msTolerance', 'سماح تأخر المعلَم (أيام)', 0, 30, 1], ['progressRatio', 'الإنجاز المقبول من المخطط (%)', 50, 100, 1],
@@ -703,24 +750,75 @@ function viewWeights(p) {
   refreshRight();
   return wrap;
 }
-function scoringGuide() {
+// ---------------- user guide (separate page; the work screens carry no explanations) ----------------
+function viewGuide() {
+  const sec = (id, title, ...kids) => h('section', { class: 'card gsec', id: `g-${id}` }, h('h2', {}, title), ...kids);
   const ex = st.w.time;
   const sum = CRITERIA.filter((c) => c.axis === 'time').reduce((s, c) => s + st.imp[c.id], 0);
   const share = sum ? (ex * st.imp.T2) / sum : 0;
-  return h('details', { class: 'adv guide', open: true }, h('summary', {}, 'كيف تُحسب الدرجة؟'),
-    h('ol', { class: 'steps-list' },
-      h('li', {}, h('b', {}, 'وزن المحور '), 'تحدده أنت (المجموع 100)، ثم يتوزّع على معايير المحور حسب أهميتها: نصيب المعيار = وزن المحور × أهميته ÷ مجموع أهميات معايير المحور.'),
-      h('li', {}, h('b', {}, 'كل معيار يُحكم عليه آليًّا '), 'من بيانات المشروع: ممتثل يأخذ نصيبه كاملًا، وملاحظة نصفه، ومخالفة صفرًا.'),
-      h('li', {}, h('b', {}, 'مؤشر الامتثال '), `= مجموع ما أخذته المعايير، من 100. ${st.cfg.okBand} فأكثر «ممتثل»، ومن ${st.cfg.warnBand} «يحتاج متابعة»، وأقل «غير ممتثل».`)),
-    h('p', { class: 'sub' }, h('b', {}, 'مثال بالأوزان الحالية: '), `محور الوقت وزنه ${ex}، ومجموع أهميات معاييره ${sum}، فنصيب معيار SPI (أهميته ${IMP[st.imp.T2]}) = ${ex} × ${st.imp.T2} ÷ ${sum} = ${nf.format(share)} نقطة. إن كانت نتيجته «ملاحظة» أخذ ${nf.format(share / 2)}.`),
-    h('div', { class: 'gloss' },
-      [['القيمة المخططة PV', 'قيمة العمل الذي كان يجب إنجازه حتى اليوم = نسبة الإنجاز المخطط × الميزانية.'],
-       ['القيمة المكتسبة EV', 'قيمة العمل الذي أُنجز فعلًا = نسبة الإنجاز الفعلي × الميزانية.'],
-       ['التكلفة الفعلية AC', 'ما صُرف فعلًا حتى اليوم.'],
-       ['SPI = EV ÷ PV', 'أداء الجدول. 1 في الموعد، وأقل متأخر.'],
-       ['CPI = EV ÷ AC', 'أداء التكلفة. 1 بقدر المنجز، وأقل صرف زائد.'],
-       ['التكلفة المتوقعة = الميزانية ÷ CPI', 'كم سيكلّف المشروع إن استمر أداء التكلفة كما هو.']]
-        .map(([k, v]) => h('div', {}, h('b', {}, k), h('span', {}, v)))));
+  const toc = [['use', 'خطوات الاستخدام'], ['score', 'حساب الدرجة'], ['axes', 'المحاور'], ['terms', 'المصطلحات'], ['crit', 'المعايير'], ['thr', 'العتبات'], ['read', 'قراءة اللوحة'], ['export', 'التصدير']];
+  const THR = [
+    ['spiTarget', 'هدف مؤشر الجدول (SPI)', 'SPI عنده أو فوقه ممتثل، وحتى 0.05 دونه ملاحظة، وأقل مخالفة.'],
+    ['cpiTarget', 'هدف مؤشر التكلفة (CPI)', 'مثل SPI على مؤشر التكلفة.'],
+    ['msTolerance', 'سماح تأخر المعلَم (أيام)', 'المعلَم المنجز بتأخر لا يتجاوزه يُعدّ في موعده.'],
+    ['progressRatio', 'الإنجاز المقبول من المخطط (%)', 'نسبة الإنجاز الفعلي إلى المخطط عندها أو فوقها ممتثل، وحتى 15 دونها ملاحظة.'],
+    ['updateDays', 'دورية تحديث الحالة (أيام)', 'تحديث خلالها ممتثل، وحتى ضعفها ملاحظة، وبعده مخالفة.'],
+    ['blockerAge', 'أقصى متوسط لعمر العائق (أيام)', 'متوسط عمر العوائق المفتوحة عنده أو أقل ممتثل، وحتى ضعفه ملاحظة.'],
+    ['okBand', 'حدّ «ممتثل» للدرجة', 'الدرجة عنده أو فوقه: المشروع ممتثل.'],
+    ['warnBand', 'حدّ «يحتاج متابعة»', 'الدرجة بينه وبين حدّ «ممتثل»: يحتاج متابعة، وأقل منه: غير ممتثل. يبقى دائمًا أقل من حدّ «ممتثل».'],
+  ];
+  return h('div', { class: 'guide-page' },
+    h('section', { class: 'card ghead' },
+      h('div', {}, h('h2', {}, 'دليل استخدام الامتثال'),
+        h('p', { class: 'lede' }, 'وحدة الامتثال تقيس التزام كل مشروع بخطته المعتمدة في خمسة محاور، وتعطيه درجة من 100 وحكمًا واضحًا، وتكشف الثغرات بالدليل من بيانات المشروع نفسها، بلا إدخال يدوي للتقييم.'),
+        h('nav', { class: 'toc', 'aria-label': 'محتويات الدليل' }, toc.map(([id, t]) => h('button', { type: 'button', class: 'chip', onclick: () => document.getElementById(`g-${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' }) }, t)))),
+      iconBtn('primary', '', 'ابدأ التقييم', () => go(st.pid ? 2 : 1), { id: 'g-start' })),
+    sec('use', 'خطوات الاستخدام',
+      h('ol', { class: 'steps-list' },
+        h('li', {}, h('b', {}, 'اختر المشروع. '), 'تظهر بطاقة لكل مشروع بإنجازه ودرجته الحالية.'),
+        h('li', {}, h('b', {}, 'حدّد المعايير والأوزان. '), 'اختر نموذج أوزان جاهزًا أو عدّل وزن كل محور حتى يصبح المجموع 100، وغيّر أهمية أي معيار، وعدّل العتبات من «إعدادات متقدمة» إن لزم. الدرجة تتغيّر فورًا في المعاينة.'),
+        h('li', {}, h('b', {}, 'أنشئ لوحة الامتثال. '), 'تعرض الحكم والدرجة والمؤشرات والثغرات والسجلات، وتُصدَّر PDF أو Excel أو CSV لمشاركتها مع المالك أو طرف ثالث.'))),
+    sec('score', 'كيف تُحسب الدرجة',
+      h('div', { class: 'formula' },
+        h('div', {}, h('span', {}, 'نصيب المعيار'), h('b', {}, '= وزن المحور × أهمية المعيار ÷ مجموع أهميات معايير المحور')),
+        h('div', {}, h('span', {}, 'ما يأخذه المعيار'), h('b', {}, '= نصيبه كاملًا إن كان ممتثلًا، ونصفه إن كان ملاحظة، وصفر إن كان مخالفة')),
+        h('div', {}, h('span', {}, 'مؤشر الامتثال'), h('b', {}, '= مجموع ما أخذته المعايير الثلاثة عشر (من 100)'))),
+      h('p', {}, `الحكم: ${st.cfg.okBand} فأكثر «ممتثل»، ومن ${st.cfg.warnBand} «يحتاج متابعة»، وأقل «غير ممتثل». الأهمية: منخفضة = 1، متوسطة = 2، عالية = 3.`),
+      h('div', { class: 'example' }, h('b', {}, 'مثال بالأوزان الحالية: '), `محور الوقت وزنه ${ex}، ومجموع أهميات معاييره ${sum}، فنصيب معيار SPI (أهميته ${IMP[st.imp.T2]} = ${st.imp.T2}) = ${ex} × ${st.imp.T2} ÷ ${sum} = ${nf.format(share)} نقطة. إن كانت نتيجته «ملاحظة» أخذ ${nf.format(share / 2)}، وإن كانت «مخالفة» أخذ صفرًا.`)),
+    sec('axes', 'المحاور الخمسة',
+      h('div', { class: 'gloss' }, AXES.map((a) => h('div', {}, h('b', {}, `${a.name} · الوزن الحالي ${st.w[a.id]}`), h('span', {}, `${a.hint}. معاييره: ${CRITERIA.filter((c) => c.axis === a.id).map((c) => c.id).join('، ')}.`))))),
+    sec('terms', 'المصطلحات والمعادلات',
+      h('div', { class: 'gloss' },
+        [['القيمة المخططة PV', 'قيمة العمل الذي كان يجب إنجازه حتى اليوم = نسبة الإنجاز المخطط × الميزانية الكاملة.'],
+         ['القيمة المكتسبة EV', 'قيمة العمل الذي أُنجز فعلًا = نسبة الإنجاز الفعلي × الميزانية الكاملة.'],
+         ['التكلفة الفعلية AC', 'ما صُرف فعلًا حتى اليوم.'],
+         ['SPI = EV ÷ PV', 'مؤشر أداء الجدول. 1 يعني في الموعد، وأقل من 1 تأخر، وأكثر تقدّم.'],
+         ['CPI = EV ÷ AC', 'مؤشر أداء التكلفة. 1 يعني الصرف بقدر المنجز، وأقل من 1 صرف أكثر من قيمة المنجز.'],
+         ['التكلفة المتوقعة = الميزانية ÷ CPI', 'كم سيكلّف المشروع عند انتهائه إن استمر أداء التكلفة كما هو.'],
+         ['الانزلاق', 'الفرق بالأيام بين النهاية المتوقعة والنهاية المعتمدة.'],
+         ['التمديد الصامت', 'موعد تحرّك عن الخطة المعتمدة دون طلب تمديد. يكتشفه النظام بالمقارنة ويسجّله «بلا طلب».']]
+          .map(([k, v]) => h('div', {}, h('b', {}, k), h('span', {}, v))))),
+    sec('crit', 'المعايير الثلاثة عشر',
+      h('div', { class: 'tablewrap' }, h('table', { class: 'gtable' }, h('thead', {}, h('tr', {}, ['الرمز', 'المحور', 'المعيار', 'الأهمية المقترحة', 'ماذا يقيس', 'طريقة الاحتساب'].map((t) => h('th', {}, t)))),
+        h('tbody', {}, CRITERIA.map((c) => h('tr', {}, h('td', { class: 'nw tab' }, c.id), h('td', { class: 'nw' }, AXES.find((a) => a.id === c.axis).name), h('td', {}, c.name), h('td', { class: 'nw' }, IMP[c.imp]), h('td', {}, EXPLAIN[c.id].what), h('td', {}, EXPLAIN[c.id].how))))))),
+    sec('thr', 'العتبات',
+      h('div', { class: 'tablewrap' }, h('table', { class: 'gtable' }, h('thead', {}, h('tr', {}, ['العتبة', 'المقترحة', 'الحالية', 'أثرها'].map((t) => h('th', {}, t)))),
+        h('tbody', {}, THR.map(([k, n, d]) => h('tr', {}, h('td', {}, n), h('td', { class: 'nw tab' }, String(DEFAULT_CFG[k])), h('td', { class: 'nw tab' }, String(st.cfg[k])), h('td', {}, d))))))),
+    sec('read', 'قراءة لوحة الامتثال',
+      h('ul', { class: 'steps-list' },
+        h('li', {}, h('b', {}, 'الدائرة: '), 'مؤشر الامتثال من 100، والعلامتان عليها حدّا «متابعة» و«ممتثل».'),
+        h('li', {}, h('b', {}, 'جدول المحاور: '), 'نسبة ما تحقق من كل محور، ونقاطه من وزنه. مجموع النقاط = مؤشر الامتثال.'),
+        h('li', {}, h('b', {}, 'المؤشرات الستة: '), 'لكل مؤشر حالة: سليم أو تنبيه أو حرج. SPI وCPI بعتبتيهما. الانزلاق: صفر أو أقل سليم، وحتى 7 أيام تنبيه، وأكثر حرج. التكلفة المتوقعة: ضمن الميزانية سليم، وتجاوز حتى 5% تنبيه، وأكثر حرج. العوائق: تجاوز مهلة دون تصعيد حرج، وتجاوز مع تصعيد تنبيه.'),
+        h('li', {}, h('b', {}, 'المعايير والثغرات: '), 'تُعرض الثغرات أولًا (المخالفات ثم الملاحظات)، ويمكن عرض كل المعايير أو تصفيتها بالمحور. النقاط: ما أخذه المعيار من نصيبه.'),
+        h('li', {}, h('b', {}, 'الميزانية حسب البند: '), 'الشريط كامل ميزانية البند، والممتلئ منه المصروف، والخط الرأسي المخطط حتى اليوم. برتقالي: صرف أسرع من المخطط بأكثر من 15%. أحمر: تجاوز ميزانية البند.'),
+        h('li', {}, h('b', {}, 'الأداء الأسبوعي: '), 'خطّا SPI وCPI لكل أسبوع، الأقدم يمينًا، والخط المتقطع العتبة.'),
+        h('li', {}, h('b', {}, 'المعالم والتمديدات والعوائق: '), 'المعتمد مقابل الفعلي أو المتوقع، وكل تمديد بحالته، و«بلا طلب» ثغرة. عمر العائق بالأيام حتى تاريخ التقرير.'),
+        h('li', {}, h('b', {}, 'المقارنة: '), 'كل المشاريع بالأوزان نفسها، لترتيبها بمعيار واحد.'))),
+    sec('export', 'التصدير والمشاركة',
+      h('ul', { class: 'steps-list' },
+        h('li', {}, h('b', {}, 'PDF: '), 'تقرير بهيئة لوحة بشعار نزلي واسم المشروع، جاهز للإرسال أو الطباعة.'),
+        h('li', {}, h('b', {}, 'Excel: '), 'ملف بشعار نزلي وهويته، أوراقه: الملخص، المعايير، المعالم، الميزانية، التمديدات، العوائق، مقارنة المشاريع.'),
+        h('li', {}, h('b', {}, 'CSV: '), 'جدول المعايير وحده، لاستيراده في أي أداة أخرى مثل Power BI.'))));
 }
 function normalize() {
   const total = sumW();
@@ -762,7 +860,7 @@ function viewReport(p) {
       .filter((r) => (capturing ? true : st.fRes === 'all' ? true : st.fRes === 'gaps' ? r.r !== 'ok' : r.r === st.fRes))
       .sort((a, b) => order[a.r] - order[b.r] || b.share - a.share);
     critBody.replaceChildren(...rows.map((r) => h('tr', { class: r.r !== 'ok' ? `sev-${r.r}` : '' },
-      h('td', { class: 'nw tab c-id' }, r.id), h('td', { class: 'nw c-ax' }, r.axisName), h('td', { class: 'c-nm' }, r.name, h('div', { class: 'sub' }, EXPLAIN[r.id].what)), h('td', { 'data-l': 'العتبة' }, r.thr), h('td', { 'data-l': 'الوضع الفعلي' }, r.act),
+      h('td', { class: 'nw tab c-id' }, r.id), h('td', { class: 'nw c-ax' }, r.axisName), h('td', { class: 'c-nm' }, r.name), h('td', { 'data-l': 'العتبة' }, r.thr), h('td', { 'data-l': 'الوضع الفعلي' }, r.act),
       h('td', { class: 'nw', 'data-l': 'النتيجة' }, pill(r.r)), h('td', { class: 'nw tab', 'data-l': 'النقاط' }, `${nf.format(r.earned)} من ${nf.format(r.share)}`))));
     critCount.textContent = `يُعرض ${rows.length} من ${ev.rows.length} معيارًا`;
   };
@@ -775,9 +873,6 @@ function viewReport(p) {
     .sort((a, b) => ({ bad: 0, warn: 1, neutral: 2, ok: 3 }[a.s[0]] - { bad: 0, warn: 1, neutral: 2, ok: 3 }[b.s[0]]));
   
   const report = h('div', { class: 'report', id: 'report' },
-    h('div', { class: 'pdf-only' }, h('div', { class: 'row', style: 'justify-content:space-between;border-bottom:2px solid #164076;padding-bottom:10px;margin-bottom:6px' },
-      h('img', { src: document.querySelector('.logo-light').src, alt: 'نزلي', style: 'height:34px' }),
-      h('span', { class: 'sub' }, `تقرير امتثال · صادر في ${fd(AS_OF)} · بيانات وهمية للعرض`))),
     h('section', { class: 'card r-head' },
       h('div', { class: 'eyebrow' }, h('span', {}, 'تقرير امتثال المشروع'), h('span', { class: 'pill neutral tab' }, p.code), h('span', {}, `الوضع في ${fd(AS_OF)}`), h('span', { class: 'pill warn' }, 'بيانات وهمية')),
       h('h2', {}, p.name),
@@ -790,7 +885,7 @@ function viewReport(p) {
         h('div', { class: 'score' }, scoreRing(ev.score, ev.grade), h('div', { class: 'score-cap' }, h('small', {}, 'مؤشر الامتثال من 100'), pill(ev.grade, GRADE[ev.grade]), h('small', { class: 'bands' }, `ممتثل من ${st.cfg.okBand} · متابعة من ${st.cfg.warnBand}`))),
         h('div', { class: 'axbars' }, h('div', { class: 'axrow axhead' }, h('span', {}, 'المحور'), h('span', {}, 'نسبة تحقق المحور'), h('span', {}, ''), h('span', {}, 'النقاط من وزنه')),
           ev.axes.map((a) => { const g = a.pct == null ? 'neutral' : band3(a.pct, st.cfg.okBand, st.cfg.warnBand); return h('div', { class: 'axrow' }, h('span', {}, a.name), h('span', { class: 'track', role: 'img', 'aria-label': `${a.name} ${a.pct == null ? 'بلا وزن' : nf.format(a.pct)}` }, h('i', { style: `width:${a.pct ?? 0}%;background:var(--${g === 'ok' ? 'live' : g === 'warn' ? 'amber' : g === 'bad' ? 'red' : 'faint'})` })), h('span', { class: 'tab' }, a.pct == null ? '—' : `${nf.format(a.pct)}%`), h('span', { class: 'w tab' }, h('b', {}, nf2.format(a.earned)), ` من ${a.w}`)); }),
-          h('div', { class: 'axrow axsum' }, h('span', {}, 'المجموع'), h('span', { class: 'sub' }, 'مؤشر الامتثال = مجموع نقاط المحاور'), h('span', {}, ''), h('span', { class: 'w tab' }, h('b', {}, nf2.format(ev.score)), ' من 100'))))),
+          h('div', { class: 'axrow axsum' }, h('span', {}, 'المجموع'), h('span', {}, ''), h('span', {}, ''), h('span', { class: 'w tab' }, h('b', {}, nf2.format(ev.score)), ' من 100'))))),
     h('section', { class: 'kpis' },
       kpiTile('مؤشر أداء الجدول (SPI)', nf2.format(k.spi), '', `الهدف ${nf2.format(st.cfg.spiTarget)} فأكثر`, band3(k.spi, st.cfg.spiTarget, st.cfg.spiTarget - 0.05)),
       kpiTile('مؤشر أداء التكلفة (CPI)', nf2.format(k.cpi), '', `الهدف ${nf2.format(st.cfg.cpiTarget)} فأكثر`, band3(k.cpi, st.cfg.cpiTarget, st.cfg.cpiTarget - 0.05)),
@@ -799,7 +894,7 @@ function viewReport(p) {
       kpiTile('الإنجاز الفعلي', nf.format(p.actualPct), '%', `المخطط حتى اليوم ${nf.format(p.plannedPct)}%`, band3((p.actualPct / p.plannedPct) * 100, st.cfg.progressRatio, st.cfg.progressRatio - 15)),
       kpiTile('العوائق المفتوحة', String(k.open), '', `تجاوز مهلته ${k.overdue} · دون تصعيد ${k.overdueUnesc}`, k.overdueUnesc ? 'bad' : k.overdue ? 'warn' : 'ok')),
     h('section', { class: 'card' },
-      h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:8px' }, h('div', {}, h('h2', {}, 'المعايير والثغرات المكتشفة'), h('p', { class: 'sub' }, 'النقاط: ما أخذه المعيار من نصيبه في وزن محوره.')),
+      h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:8px' }, h('h2', {}, 'المعايير والثغرات المكتشفة'),
         h('div', { class: 'filters no-pdf' }, h('label', { for: 'f-res' }, 'النتيجة', resSel), h('label', { for: 'f-ax' }, 'المحور', axSel), critCount)),
       h('div', { class: 'tablewrap' }, h('table', { class: 'crit-table' }, h('thead', {}, h('tr', {}, ['الرمز', 'المحور', 'المعيار', 'العتبة', 'الوضع الفعلي', 'النتيجة', 'النقاط'].map((t) => h('th', {}, t)))), critBody))),
     h('section', { class: 'grid2' },
@@ -823,27 +918,22 @@ function viewReport(p) {
               h('i', { class: 'mk', style: `inset-inline-start:calc(${Math.min(100, (b.pv / b.bac) * 100)}% - 1px)` })),
             h('div', { class: 'ft' }, h('span', {}, 'المخطط حتى اليوم ', h('span', { class: 'tab' }, money(b.pv))), h('span', { class: `tab ${diff > 0 ? (st2 === 'ok' ? 'dim-t' : st2 + '-t') : 'ok-t'}` }, diff > 0 ? `+${money(diff)} عن المخطط` : diff < 0 ? `${money(-diff)} أقل من المخطط` : 'مطابق للمخطط')));
         })))),
-    h('section', { class: 'card' }, h('h2', {}, 'المعالم: المعتمد مقابل الفعلي والمتوقع'), h('p', { class: 'sub', style: 'margin-bottom:8px' }, `المعلَم المنجز يُعد في موعده إن لم يتأخر أكثر من ${dArB(st.cfg.msTolerance)}.`),
+    h('section', { class: 'card' }, h('h2', { style: 'margin-bottom:8px' }, 'المعالم: المعتمد مقابل الفعلي والمتوقع'),
       h('div', { class: 'tablewrap' }, h('table', {}, h('thead', {}, h('tr', {}, ['الرمز', 'المعلَم', 'المسؤول', 'المعتمد', 'الفعلي أو المتوقع', 'الفرق (يوم)', 'الحالة'].map((t) => h('th', {}, t)))),
         h('tbody', {}, p.milestones.map((m) => { const v = days(m.baseline, m.current); const [r, t] = msState(m); return h('tr', { class: r !== 'ok' ? `sev-${r}` : '' }, h('td', { class: 'nw tab' }, m.id), h('td', {}, m.name), h('td', {}, m.owner), h('td', { class: 'nw' }, fd(m.baseline)), h('td', { class: 'nw' }, fd(m.current)), h('td', { class: `nw tab ${v <= 0 ? 'ok' : v <= st.cfg.msTolerance ? 'warn' : 'bad'}-t` }, v > 0 ? `+${v}` : String(v)), h('td', {}, pill(r, t))); }))))),
     h('section', { style: 'display:grid;gap:18px' },
-      h('div', { class: 'card' }, h('h2', {}, 'سجل التمديدات وتحريك المواعيد'), h('p', { class: 'sub', style: 'margin-bottom:8px' }, '«بلا طلب» ثغرة يكتشفها النظام بمقارنة الخطة المعتمدة بالمواعيد الحالية.'),
+      h('div', { class: 'card' }, h('h2', { style: 'margin-bottom:8px' }, 'سجل التمديدات وتحريك المواعيد'),
         h('div', { class: 'tablewrap' }, h('table', { style: 'min-width:560px' }, h('thead', {}, h('tr', {}, ['الرمز', 'التاريخ', 'السبب', 'الأيام', 'الأثر المالي', 'الحالة'].map((t) => h('th', {}, t)))),
           h('tbody', {}, p.extensions.map((e) => h('tr', { class: extR[e.status] !== 'ok' ? `sev-${extR[e.status]}` : '' }, h('td', { class: 'nw tab' }, e.id), h('td', { class: 'nw' }, fds(e.date)), h('td', {}, e.title, h('div', { class: 'sub' }, `${e.category} · المعتمِد: ${e.approver}`)), h('td', { class: 'tab' }, e.days), h('td', { class: 'nw tab' }, money(e.cost)), h('td', {}, pill(extR[e.status], e.status)))))))),
-      h('div', { class: 'card' }, h('h2', {}, 'سجل العوائق'), h('p', { class: 'sub', style: 'margin-bottom:8px' }, 'العمر بالأيام للعوائق المفتوحة حتى تاريخ التقرير.'),
+      h('div', { class: 'card' }, h('h2', { style: 'margin-bottom:8px' }, 'سجل العوائق'),
         h('div', { class: 'tablewrap' }, h('table', { style: 'min-width:560px' }, h('thead', {}, h('tr', {}, ['الرمز', 'العائق', 'الأثر', 'المهلة', 'العمر', 'الحالة'].map((t) => h('th', {}, t)))),
           h('tbody', {}, blkRows.map((b) => h('tr', { class: b.s[0] === 'bad' || b.s[0] === 'warn' ? `sev-${b.s[0]}` : '' }, h('td', { class: 'nw tab' }, b.id), h('td', {}, b.title, h('div', { class: 'sub' }, `${b.category} · ${b.owner}`)), h('td', { class: 'nw' }, b.impact), h('td', { class: 'nw' }, fds(b.due)), h('td', { class: 'tab' }, b.age), h('td', {}, pill(b.s[0], b.s[1]))))))))),
-    h('section', { class: 'card' }, h('h2', {}, 'مقارنة المشاريع بالأوزان نفسها'), h('p', { class: 'sub', style: 'margin-bottom:10px' }, 'تفيد إدارة الامتثال في ترتيب المشاريع والأقسام بمعيار واحد.'),
+    h('section', { class: 'card' }, h('h2', { style: 'margin-bottom:10px' }, 'مقارنة المشاريع بالأوزان نفسها'),
       h('div', { class: 'cmp' }, all.map((x) => h('div', { class: `cmp-row ${x.p.id === p.id ? 'me' : ''}` }, h('span', {}, x.p.name),
         h('span', { class: 'track', style: 'height:10px;border-radius:999px;background:var(--panel2);position:relative;overflow:hidden;display:block' }, h('i', { style: `position:absolute;inset-block:0;inset-inline-start:0;border-radius:999px;width:${x.score}%;background:var(--${x.grade === 'ok' ? 'live' : x.grade === 'warn' ? 'amber' : 'red'})` })),
         h('span', { class: 'tab' }, nf.format(x.score)), pill(x.grade, GRADE[x.grade]))))),
     h('section', { class: 'card' }, h('h3', {}, 'الأوزان والعتبات المستخدمة في هذا التقرير'),
-      h('div', { class: 'weights-used', style: 'margin-top:8px' }, AXES.map((a) => h('span', { class: 'pill neutral tab' }, `${a.name} ${st.w[a.id]}`)), h('span', { class: 'pill neutral tab' }, `SPI ≥ ${nf2.format(st.cfg.spiTarget)}`), h('span', { class: 'pill neutral tab' }, `CPI ≥ ${nf2.format(st.cfg.cpiTarget)}`), h('span', { class: 'pill neutral tab' }, `تحديث كل ${dAr(st.cfg.updateDays)}`), h('span', { class: 'pill neutral tab' }, `سماح المعالم ${dAr(st.cfg.msTolerance)}`)),
-      h('p', { class: 'sub', style: 'margin-top:8px' }, 'SPI = قيمة المنجز ÷ قيمة المخطط حتى اليوم · CPI = قيمة المنجز ÷ التكلفة الفعلية · التكلفة المتوقعة = الميزانية ÷ CPI.')),
-    h('section', { class: 'card' }, h('h2', {}, 'طريقة احتساب المعايير'),
-      h('p', { class: 'sub', style: 'margin-bottom:8px' }, 'نصيب المعيار = وزن محوره × أهميته ÷ مجموع أهميات معايير المحور. ممتثل يأخذ نصيبه كاملًا، وملاحظة نصفه، ومخالفة صفرًا. مؤشر الامتثال = مجموع ما أخذته المعايير.'),
-      h('div', { class: 'tablewrap' }, h('table', {}, h('thead', {}, h('tr', {}, ['الرمز', 'المعيار', 'ماذا يقيس', 'طريقة الاحتساب'].map((t) => h('th', {}, t)))),
-        h('tbody', {}, CRITERIA.map((c) => h('tr', {}, h('td', { class: 'nw tab' }, c.id), h('td', {}, c.name), h('td', {}, EXPLAIN[c.id].what), h('td', {}, EXPLAIN[c.id].how))))))));
+      h('div', { class: 'weights-used', style: 'margin-top:8px' }, AXES.map((a) => h('span', { class: 'pill neutral tab' }, `${a.name} ${st.w[a.id]}`)), h('span', { class: 'pill neutral tab' }, `SPI ≥ ${nf2.format(st.cfg.spiTarget)}`), h('span', { class: 'pill neutral tab' }, `CPI ≥ ${nf2.format(st.cfg.cpiTarget)}`), h('span', { class: 'pill neutral tab' }, `تحديث كل ${dAr(st.cfg.updateDays)}`), h('span', { class: 'pill neutral tab' }, `سماح المعالم ${dAr(st.cfg.msTolerance)}`))));
 
   return h('div', { style: 'display:grid;gap:16px' }, toolbar, report);
 }
@@ -928,43 +1018,97 @@ async function saveFile(filename, data) {
 }
 const baseName = () => `امتثال-${CUR.p.code}-${AS_OF}`;
 
+// PDF: a dashboard-style report built page by page (A4), each page with the Nuzli logo, the project
+// name and a page footer. Sections never split mid-row: a section moves whole to the next page, and a
+// table taller than a page continues on the next page with its header repeated.
 async function exportPdf() {
   if (!window.htmlToImage || !window.jspdf) { toast('مكتبات التصدير لم تُحمَّل بعد، حاول بعد لحظة.'); return; }
   const busy = h('div', { class: 'busy' }, h('div', {}, 'يُجهَّز ملف PDF…'));
   document.body.append(busy);
-  const root = document.documentElement; const prevTheme = root.getAttribute('data-theme');
+  const doc = h('div', { class: 'pdfdoc', 'aria-hidden': 'true' });
   try {
-    root.setAttribute('data-theme', 'light');
     document.body.classList.add('capturing');
     window.__fillCrit && window.__fillCrit();
     drawCharts();
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-    const node = document.getElementById('report');
-    const canvas = await htmlToImage.toCanvas(node, { pixelRatio: 2, backgroundColor: '#ffffff', fontEmbedCSS: FONT_CSS, cacheBust: false });
+    const ev = CUR, p = ev.p;
+    const logo = document.querySelector('.logo-light').src;
+    document.body.append(doc);
+
+    // Report sections, cloned from the dashboard on screen (charts included), in reading order.
+    const rep = document.getElementById('report');
+    const parts = [];
+    [...rep.children].forEach((n) => {
+      if (n.classList.contains('pdf-only')) return;
+      if (n.tagName === 'SECTION' && !n.classList.contains('card') && !n.classList.contains('kpis') && !n.classList.contains('grid2')) [...n.children].forEach((c) => parts.push(c));
+      else parts.push(n);
+    });
+    const clones = parts.map((n) => {
+      const c = n.cloneNode(true);
+      c.querySelectorAll('.no-pdf, .tip').forEach((x) => x.remove());
+      if (c.classList.contains('r-head')) c.querySelectorAll('.eyebrow, h2').forEach((x) => x.remove());
+      return c;
+    });
+
+    // Page 1 is the dashboard: summary, verdict, indicators, then the charts; the detail tables follow.
+    const gi = clones.findIndex((c) => c.classList.contains('grid2')), ki = clones.findIndex((c) => c.classList.contains('kpis'));
+    if (gi > ki && ki >= 0) clones.splice(ki + 1, 0, ...clones.splice(gi, 1));
+    const pages = [];
+    const newPage = () => {
+      const body = h('div', { class: 'pp-body' });
+      const page = h('div', { class: 'pdfpage' },
+        h('header', { class: 'pp-head' },
+          h('img', { src: logo, alt: 'نزلي' }),
+          h('div', { class: 'pp-title' }, h('small', {}, 'تقرير امتثال المشروع'), h('b', {}, p.name)),
+          h('div', { class: 'pp-meta' }, h('span', { class: 'tab' }, p.code), h('span', {}, `الوضع في ${fd(AS_OF)}`), h('span', { class: `pp-grade ${ev.grade}` }, `${GRADE[ev.grade]} · ${nf.format(ev.score)}`))),
+        body,
+        h('footer', { class: 'pp-foot' }, h('span', {}, 'نزلي · إدارة المشاريع — وحدة الامتثال'), h('span', {}, 'بيانات وهمية للعرض'), h('span', { class: 'pp-no tab' })));
+      doc.append(page); pages.push(page); return body;
+    };
+    const fits = (body) => body.scrollHeight <= body.clientHeight + 1;
+    let body = newPage();
+    for (const sec of clones) {
+      body.append(sec);
+      if (fits(body)) continue;
+      sec.remove();
+      if (body.children.length) { body = newPage(); body.append(sec); if (fits(body)) continue; sec.remove(); }
+      // Taller than a whole page: split its table by rows, repeating the header on each page.
+      const rows = [...sec.querySelectorAll('tbody tr')];
+      if (!rows.length) { body.append(sec); continue; }
+      let part = sec.cloneNode(true); part.querySelector('tbody').replaceChildren();
+      const shell = part.cloneNode(true);
+      body.append(part);
+      for (const tr of rows) {
+        part.querySelector('tbody').append(tr);
+        if (!fits(body)) {
+          tr.remove();
+          body = newPage();
+          part = shell.cloneNode(true);
+          const t2 = part.querySelector('h2, h3'); if (t2) t2.textContent += ' (تابع)';
+          body.append(part); part.querySelector('tbody').append(tr);
+        }
+      }
+    }
+    pages.forEach((pg, i) => { pg.querySelector('.pp-no').textContent = `صفحة ${i + 1} من ${pages.length}`; });
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
-    const pw = 210, ph = 297, margin = 8, iw = pw - margin * 2;
-    const pxPerMm = canvas.width / iw;
-    const pageHpx = Math.floor((ph - margin * 2) * pxPerMm);
-    let y = 0, first = true;
-    while (y < canvas.height) {
-      const hpx = Math.min(pageHpx, canvas.height - y);
-      const slice = document.createElement('canvas'); slice.width = canvas.width; slice.height = hpx;
-      const ctx = slice.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, slice.width, hpx); ctx.drawImage(canvas, 0, y, canvas.width, hpx, 0, 0, canvas.width, hpx);
-      if (!first) pdf.addPage();
-      pdf.addImage(slice.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, iw, hpx / pxPerMm);
-      first = false; y += hpx;
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await htmlToImage.toCanvas(pages[i], { pixelRatio: 2, backgroundColor: '#ffffff', fontEmbedCSS: FONT_CSS, cacheBust: false });
+      if (i) pdf.addPage();
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 210, 297);
     }
-    restore();
-    busy.remove();
+    pdf.setProperties({ title: `تقرير امتثال — ${p.name}`, subject: 'تقرير امتثال المشروع', creator: 'نزلي — إدارة المشاريع' });
+    cleanup();
     await saveFile(`${baseName()}.pdf`, pdf.output('arraybuffer'));
   } catch (e) {
-    restore(); busy.remove();
+    cleanup();
     toast('تعذّر إنشاء ملف PDF في هذا المتصفح.');
   }
-  function restore() {
+  function cleanup() {
+    doc.remove(); busy.remove();
     document.body.classList.remove('capturing');
-    if (prevTheme == null) root.removeAttribute('data-theme'); else root.setAttribute('data-theme', prevTheme);
     window.__fillCrit && window.__fillCrit();
     drawCharts();
   }
@@ -987,17 +1131,134 @@ function sheetRows() {
   const cmp = [['المشروع', 'الجهة', 'مؤشر الامتثال', 'الحكم'], ...PROJECTS.map((x) => evaluate(x, st)).sort((a, b) => b.score - a.score).map((x) => [x.p.name, x.p.dept, Math.round(x.score * 10) / 10, GRADE[x.grade]])];
   return { 'الملخص': summary, 'المعايير': criteria, 'المعالم': ms, 'الميزانية': bud, 'التمديدات': ext, 'العوائق': blk, 'مقارنة المشاريع': cmp };
 }
+// Excel in the Nuzli identity: logo and report header on every sheet, navy table headers, zebra rows,
+// coloured result cells, right-to-left sheets, frozen headers and filters.
 async function exportXlsx() {
-  if (!window.XLSX) { toast('مكتبة Excel لم تُحمَّل بعد، حاول بعد لحظة.'); return; }
-  const wb = XLSX.utils.book_new();
-  for (const [name, rows] of Object.entries(sheetRows())) {
-    const ws = XLSX.utils.aoa_to_sheet(rows);
-    const widths = rows.reduce((w, r) => { r.forEach((c, i) => { w[i] = Math.min(60, Math.max(w[i] || 8, String(c ?? '').length + 2)); }); return w; }, []);
-    ws['!cols'] = widths.map((wch) => ({ wch }));
-    XLSX.utils.book_append_sheet(wb, ws, name);
+  if (!window.ExcelJS) { toast('مكتبة Excel لم تُحمَّل بعد، حاول بعد لحظة.'); return; }
+  const ev = CUR, p = ev.p, k = ev.k;
+  const NAVY = 'FF164076', INK = 'FF1B2430', DIM = 'FF5B6675', LINE = 'FFE3E8EF', ZEBRA = 'FFF5F8FC', TINT = 'FFE8EEF6';
+  const FONT = 'IBM Plex Sans Arabic';
+  const TONE = { ok: ['FFE6F4EA', 'FF1E6B2A'], warn: ['FFFFF1DC', 'FF8A4B00'], bad: ['FFFDE8E8', 'FFB42020'], neutral: ['FFF0F2F5', DIM] };
+  const toneOf = (txt) => ({ 'ممتثل': 'ok', 'سليم': 'ok', 'معتمد': 'ok', 'محلول': 'ok', 'نعم': 'ok', 'ملاحظة': 'warn', 'يحتاج متابعة': 'warn', 'تنبيه': 'warn', 'قيد الاعتماد': 'warn', 'مخالفة': 'bad', 'غير ممتثل': 'bad', 'حرج': 'bad', 'بلا طلب': 'bad' }[txt]);
+  const wb = new ExcelJS.Workbook();
+  wb.creator = 'نزلي — إدارة المشاريع'; wb.created = new Date(AS_OF + 'T00:00:00Z');
+  const logoId = wb.addImage({ base64: document.querySelector('.logo-light').src, extension: 'png' });
+  const border = { top: { style: 'thin', color: { argb: LINE } }, bottom: { style: 'thin', color: { argb: LINE } }, left: { style: 'thin', color: { argb: LINE } }, right: { style: 'thin', color: { argb: LINE } } };
+
+  // Sheet with the report header (rows 1–4) and returns the next free row.
+  const sheet = (name, widths) => {
+    const ws = wb.addWorksheet(name, { views: [{ rightToLeft: true, showGridLines: false }], properties: { defaultRowHeight: 20 } });
+    ws.columns = widths.map((w) => ({ width: w }));
+    const last = Math.max(widths.length, 4);
+    ws.getRow(1).height = 44; ws.getRow(2).height = 22; ws.getRow(3).height = 18; ws.getRow(4).height = 8;
+    ws.addImage(logoId, { tl: { col: 0.15, row: 0.2 }, ext: { width: 120, height: 42 } });
+    ws.mergeCells(1, 2, 1, last); ws.mergeCells(2, 1, 2, last); ws.mergeCells(3, 1, 3, last);
+    Object.assign(ws.getCell(1, 2), { value: `تقرير امتثال المشروع — ${name}`, font: { name: FONT, size: 15, bold: true, color: { argb: NAVY } }, alignment: { vertical: 'middle', horizontal: 'right' } });
+    Object.assign(ws.getCell(2, 1), { value: p.name, font: { name: FONT, size: 12, bold: true, color: { argb: INK } }, alignment: { horizontal: 'right' } });
+    Object.assign(ws.getCell(3, 1), { value: `${p.code} · ${p.dept} · الوضع في ${fd(AS_OF)} · بيانات وهمية للعرض`, font: { name: FONT, size: 10, color: { argb: DIM } }, alignment: { horizontal: 'right' } });
+    for (let c = 1; c <= last; c++) ws.getCell(4, c).border = { bottom: { style: 'medium', color: { argb: NAVY } } };
+    return { ws, row: 6 };
+  };
+  // A titled table; `fmt` gives an Excel number format per column; result-like cells are coloured.
+  const table = (ws, row, title, head, rows, fmt = []) => {
+    if (title) { const c = ws.getCell(row, 1); c.value = title; c.font = { name: FONT, size: 12, bold: true, color: { argb: NAVY } }; row += 1; }
+    const hr = ws.getRow(row);
+    head.forEach((t, i) => Object.assign(hr.getCell(i + 1), { value: t, font: { name: FONT, size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } }, fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: NAVY } }, alignment: { vertical: 'middle', horizontal: 'right', wrapText: true }, border }));
+    hr.height = 24;
+    const headRow = row;
+    rows.forEach((r, ri) => {
+      row += 1;
+      const xr = ws.getRow(row);
+      r.forEach((v, i) => {
+        const c = xr.getCell(i + 1);
+        c.value = v;
+        c.font = { name: FONT, size: 10, color: { argb: INK } };
+        c.alignment = { vertical: 'top', horizontal: typeof v === 'number' ? 'left' : 'right', wrapText: true };
+        c.border = border;
+        if (ri % 2) c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: ZEBRA } };
+        if (fmt[i]) c.numFmt = fmt[i];
+        const tn = typeof v === 'string' && toneOf(v);
+        if (tn) { c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: TONE[tn][0] } }; c.font = { name: FONT, size: 10, bold: true, color: { argb: TONE[tn][1] } }; c.alignment = { vertical: 'top', horizontal: 'center' }; }
+      });
+    });
+    return { row: row + 2, headRow, lastRow: row };
+  };
+  const finish = (ws, t, cols) => { ws.views = [{ rightToLeft: true, showGridLines: false, state: 'frozen', ySplit: t.headRow }]; ws.autoFilter = { from: { row: t.headRow, column: 1 }, to: { row: t.lastRow, column: cols } }; };
+  const MONEY = '#,##0 "ر.س"', R2 = '0.00', R1 = '0.0';
+
+  // 1) Summary: the verdict, the axes and the six indicators, then the weights and thresholds used.
+  {
+    const { ws, row } = sheet('الملخص', [30, 16, 16, 16, 34]);
+    let r = row;
+    ws.mergeCells(r, 1, r, 2); ws.mergeCells(r, 3, r, 5);
+    Object.assign(ws.getCell(r, 1), { value: 'مؤشر الامتثال', font: { name: FONT, size: 11, color: { argb: DIM } }, alignment: { horizontal: 'right', vertical: 'middle' } });
+    Object.assign(ws.getCell(r, 3), { value: `${nf.format(ev.score)} من 100 — ${GRADE[ev.grade]}`, font: { name: FONT, size: 16, bold: true, color: { argb: TONE[ev.grade][1] } }, fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: TONE[ev.grade][0] } }, alignment: { horizontal: 'center', vertical: 'middle' } });
+    ws.getRow(r).height = 32; r += 2;
+    let t = table(ws, r, 'الدرجة حسب المحور', ['المحور', 'الوزن', 'النقاط', 'نسبة التحقق %', 'الحكم'],
+      [...ev.axes.map((a) => [a.name, a.w, Math.round(a.earned * 100) / 100, a.pct == null ? null : Math.round(a.pct * 10) / 10, a.pct == null ? '—' : GRADE[band3(a.pct, st.cfg.okBand, st.cfg.warnBand)]]), ['المجموع', 100, Math.round(ev.score * 100) / 100, null, GRADE[ev.grade]]], [null, '0', R2, R1]);
+    const sumRow = ws.getRow(t.lastRow); sumRow.eachCell((c) => { c.font = { ...c.font, bold: true }; if (!toneOf(String(c.value))) c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: TINT } }; });
+    const st6 = (r6) => (r6 === 'ok' ? 'سليم' : r6 === 'warn' ? 'تنبيه' : 'حرج');
+    t = table(ws, t.row, 'المؤشرات', ['المؤشر', 'القيمة', 'الهدف أو المرجع', 'الحالة'], [
+      ['مؤشر أداء الجدول (SPI)', k.spi, st.cfg.spiTarget, st6(band3(k.spi, st.cfg.spiTarget, st.cfg.spiTarget - 0.05))],
+      ['مؤشر أداء التكلفة (CPI)', k.cpi, st.cfg.cpiTarget, st6(band3(k.cpi, st.cfg.cpiTarget, st.cfg.cpiTarget - 0.05))],
+      ['الانزلاق عن النهاية المعتمدة (يوم)', k.slip, 0, st6(k.slip <= 0 ? 'ok' : k.slip <= 7 ? 'warn' : 'bad')],
+      ['التكلفة المتوقعة عند الإنجاز', k.eac, p.bac, st6(k.vac >= 0 ? 'ok' : k.vac > -0.05 * p.bac ? 'warn' : 'bad')],
+      ['الإنجاز الفعلي %', p.actualPct, p.plannedPct, st6(band3((p.actualPct / p.plannedPct) * 100, st.cfg.progressRatio, st.cfg.progressRatio - 15))],
+      ['العوائق المفتوحة', k.open, null, st6(k.overdueUnesc ? 'bad' : k.overdue ? 'warn' : 'ok')]]);
+    [[t.lastRow - 5, R2], [t.lastRow - 4, R2], [t.lastRow - 2, MONEY]].forEach(([rr, f]) => { ws.getCell(rr, 2).numFmt = f; ws.getCell(rr, 3).numFmt = f; });
+    t = table(ws, t.row, 'الأوزان والعتبات المستخدمة', ['البند', 'القيمة'], [
+      ...AXES.map((a) => [`وزن ${a.name}`, st.w[a.id]]),
+      ['هدف SPI', st.cfg.spiTarget], ['هدف CPI', st.cfg.cpiTarget], ['سماح المعالم (أيام)', st.cfg.msTolerance], ['الإنجاز المقبول من المخطط %', st.cfg.progressRatio],
+      ['دورية تحديث الحالة (أيام)', st.cfg.updateDays], ['أقصى متوسط لعمر العائق (أيام)', st.cfg.blockerAge], ['حدّ «ممتثل»', st.cfg.okBand], ['حدّ «يحتاج متابعة»', st.cfg.warnBand]]);
   }
-  wb.Workbook = { Views: [{ RTL: true }] };
-  const buf = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+  // 2) Criteria
+  {
+    const { ws, row } = sheet('المعايير', [8, 12, 38, 30, 34, 12, 12, 12]);
+    const t = table(ws, row, null, ['الرمز', 'المحور', 'المعيار', 'العتبة', 'الوضع الفعلي', 'النتيجة', 'النصيب', 'المكتسب'],
+      [...ev.rows].sort((a, b) => ({ bad: 0, warn: 1, ok: 2 }[a.r] - { bad: 0, warn: 1, ok: 2 }[b.r])).map((r) => [r.id, r.axisName, r.name, r.thr, r.act, RES[r.r], Math.round(r.share * 100) / 100, Math.round(r.earned * 100) / 100]), [null, null, null, null, null, null, R2, R2]);
+    finish(ws, t, 8);
+  }
+  // 3) Milestones
+  {
+    const { ws, row } = sheet('المعالم', [8, 40, 18, 16, 18, 12, 16]);
+    const msS = (m) => { const v = days(m.baseline, m.current); if (m.done) return v <= st.cfg.msTolerance ? 'أُنجز في موعده' : 'أُنجز متأخرًا'; if (m.baseline < AS_OF) return 'متأخر'; return v > 0 ? 'متوقع تأخره' : 'في موعده'; };
+    const t = table(ws, row, null, ['الرمز', 'المعلَم', 'المسؤول', 'المعتمد', 'الفعلي أو المتوقع', 'الفرق (يوم)', 'الحالة'],
+      p.milestones.map((m) => [m.id, m.name, m.owner, fd(m.baseline), fd(m.current), days(m.baseline, m.current), msS(m)]));
+    ws.getColumn(7).eachCell((c, i) => { if (i > t.headRow && c.value) { const tn = /في موعده/.test(c.value) ? 'ok' : c.value === 'متأخر' ? 'bad' : 'warn'; c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: TONE[tn][0] } }; c.font = { name: FONT, size: 10, bold: true, color: { argb: TONE[tn][1] } }; c.alignment = { horizontal: 'center', vertical: 'top' }; } });
+    finish(ws, t, 7);
+  }
+  // 4) Budget, with a totals row
+  {
+    const { ws, row } = sheet('الميزانية', [26, 18, 18, 18, 18, 14]);
+    const rows = p.budget.map((b) => [b.item, b.bac, b.pv, b.ac, b.ac - b.pv, b.ac / b.bac]);
+    rows.push(['الإجمالي', p.bac, p.pv, p.ac, p.ac - p.pv, p.ac / p.bac]);
+    const t = table(ws, row, null, ['البند', 'ميزانية البند', 'المخطط حتى اليوم', 'المصروف', 'الفرق عن المخطط', 'نسبة الصرف'], rows, [null, MONEY, MONEY, MONEY, MONEY, '0.0%']);
+    ws.getRow(t.lastRow).eachCell((c) => { c.font = { ...c.font, bold: true }; c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: TINT } }; });
+    p.budget.forEach((b, i) => { const c = ws.getCell(t.headRow + 1 + i, 5); const tn = b.ac > b.bac ? 'bad' : b.ac > b.pv * 1.15 ? 'warn' : null; if (tn) c.font = { name: FONT, size: 10, bold: true, color: { argb: TONE[tn][1] } }; });
+    finish(ws, { ...t, lastRow: t.lastRow - 1 }, 6);
+  }
+  // 5) Extensions and 6) blockers
+  {
+    const { ws, row } = sheet('التمديدات', [8, 16, 40, 14, 10, 16, 16, 16]);
+    const t = table(ws, row, null, ['الرمز', 'التاريخ', 'السبب', 'التصنيف', 'الأيام', 'الأثر المالي', 'الحالة', 'المعتمِد'],
+      p.extensions.map((e) => [e.id, fd(e.date), e.title, e.category, e.days, e.cost, e.status, e.approver]), [null, null, null, null, '0', MONEY]);
+    finish(ws, t, 8);
+  }
+  {
+    const { ws, row } = sheet('العوائق', [8, 40, 12, 10, 16, 16, 10, 22, 18]);
+    const t = table(ws, row, null, ['الرمز', 'العائق', 'التصنيف', 'الأثر', 'الفتح', 'المهلة', 'العمر (يوم)', 'الحالة', 'المسؤول'],
+      p.blockers.map((b) => [b.id, b.title, b.category, b.impact, fd(b.opened), fd(b.due), b.status === 'محلول' ? null : days(b.opened, AS_OF), b.status === 'محلول' ? 'محلول' : b.due < AS_OF ? (b.escalated ? 'تجاوز المهلة · مُصعَّد' : 'تجاوز المهلة · دون تصعيد') : 'مفتوح', b.owner]));
+    ws.getColumn(8).eachCell((c, i) => { if (i > t.headRow && c.value && c.value !== 'محلول') { const tn = /دون تصعيد/.test(c.value) ? 'bad' : /مُصعَّد/.test(c.value) ? 'warn' : 'neutral'; c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: TONE[tn][0] } }; c.font = { name: FONT, size: 10, bold: true, color: { argb: TONE[tn][1] } }; } });
+    finish(ws, t, 9);
+  }
+  // 7) Comparison
+  {
+    const { ws, row } = sheet('مقارنة المشاريع', [44, 32, 16, 18]);
+    const t = table(ws, row, null, ['المشروع', 'الجهة', 'مؤشر الامتثال', 'الحكم'],
+      PROJECTS.map((x) => evaluate(x, st)).sort((a, b) => b.score - a.score).map((x) => [x.p.name, x.p.dept, Math.round(x.score * 10) / 10, GRADE[x.grade]]), [null, null, R1]);
+    finish(ws, t, 4);
+  }
+  const buf = await wb.xlsx.writeBuffer();
   await saveFile(`${baseName()}.xlsx`, buf);
 }
 async function exportCsv() {
