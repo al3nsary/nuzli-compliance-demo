@@ -157,19 +157,30 @@ button, input, select { font: inherit; color: inherit; }
 .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 18px; margin: 0; }
 .meta dt { font-size: 12px; color: var(--dim); }
 .meta dd { margin: 2px 0 0; font-weight: 500; }
-.verdict { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: center; }
-.score { display: grid; gap: 6px; justify-items: start; }
+.verdict { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: center; }
+.score { display: flex; gap: 14px; align-items: center; }
+.score .ring { flex: none; }
+.score-cap { display: grid; gap: 8px; justify-items: start; }
+.score-cap .bands { font-size: 11.5px; }
 .score .big { font-size: 56px; font-weight: 600; line-height: 1; }
 .score small { color: var(--dim); font-size: 12px; line-height: 1.6; }
 .axbars { display: grid; gap: 10px; }
-.axrow { display: grid; grid-template-columns: 90px minmax(0, 1fr) 64px 60px; gap: 10px; align-items: center; font-size: 13px; }
+.axrow { display: grid; grid-template-columns: 90px minmax(0, 1fr) 56px 96px; gap: 10px; align-items: center; font-size: 13px; }
 .axrow .track { height: 10px; border-radius: 999px; background: var(--panel2); overflow: hidden; position: relative; }
 .axrow .track i { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 999px; }
-.axrow .w { color: var(--dim); font-size: 12px; }
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-.kpi { border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: var(--panel); display: grid; gap: 6px; align-content: start; }
+.axrow .w { color: var(--dim); font-size: 12px; text-align: end; }
+.axrow .w b { color: var(--ink); font-weight: 600; font-size: 13px; }
+.axrow.axhead { font-size: 11.5px; color: var(--dim); padding-bottom: 2px; border-bottom: 1px solid var(--line); }
+.axrow.axhead span:last-child { text-align: end; }
+.axrow.axsum { border-top: 1px solid var(--line); padding-top: 8px; font-weight: 600; }
+.axrow.axsum .sub { font-weight: 400; font-size: 12px; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.kpi { border: 1px solid var(--line); border-top: 3px solid var(--line2); border-radius: 12px; padding: 14px 16px; background: var(--panel); display: grid; gap: 8px; align-content: start; }
+.kpi.k-ok { border-top-color: var(--live); } .kpi.k-warn { border-top-color: var(--amber); } .kpi.k-bad { border-top-color: var(--red); }
+.kpi .kh { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.kpi .kh .pill { font-size: 11px; padding: 1px 8px; }
 .kpi .l { font-size: 12px; color: var(--dim); }
-.kpi .v { font-size: 26px; font-weight: 600; line-height: 1.1; }
+.kpi .v { font-size: 28px; font-weight: 600; line-height: 1.1; }
 .kpi .v small { font-size: 12px; color: var(--dim); font-weight: 400; margin-inline-start: 4px; }
 .kpi .n { font-size: 12px; color: var(--dim); line-height: 1.6; }
 .tablewrap { overflow-x: auto; }
@@ -189,13 +200,37 @@ td.nw { white-space: nowrap; }
 .ckey span { display: inline-flex; gap: 6px; align-items: center; }
 .ckey i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
 .ckey i.box { width: 10px; height: 10px; border-radius: 3px; }
-.bud { display: grid; gap: 12px; }
-.bud-row { display: grid; gap: 4px; }
-.bud-row .hd { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
-.bud-row .hd span:last-child { color: var(--dim); font-size: 12px; }
-.bline { display: grid; grid-template-columns: minmax(0, 1fr) 80px; gap: 8px; align-items: center; font-size: 12px; }
-.bline .tr { height: 10px; background: var(--panel2); border-radius: 999px; position: relative; overflow: hidden; }
-.bline .tr i { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 999px; }
+.bud { display: grid; gap: 14px; margin-top: 4px; }
+.bud-row { display: grid; gap: 6px; }
+.bud-row .hd { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; flex-wrap: wrap; }
+.bud-row .hd span { color: var(--dim); font-size: 12px; }
+.bud-row .ft { display: flex; justify-content: space-between; gap: 10px; font-size: 11.5px; color: var(--dim); flex-wrap: wrap; }
+.btrack { display: block; position: relative; height: 12px; border-radius: 999px; background: var(--panel2); }
+.btrack .fill { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 999px; }
+.btrack .mk, .ckey i.mk { position: absolute; top: -4px; bottom: -4px; width: 2px; border-radius: 2px; background: var(--ink); }
+.ckey i.mk { position: static; display: inline-block; width: 2px; height: 12px; vertical-align: middle; }
+.dim-t { color: var(--dim); }
+.axrow .w { white-space: nowrap; }
+.trend-sum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+.trend-sum div { display: grid; gap: 2px; }
+.trend-sum span, .trend-sum small { font-size: 11.5px; color: var(--dim); }
+.trend-sum b { font-size: 16px; font-weight: 600; }
+@media (max-width: 600px) {
+  .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crit-table { min-width: 0; }
+  .crit-table thead { display: none; }
+  .crit-table tr { display: grid; grid-template-columns: auto auto 1fr; gap: 2px 10px; padding: 12px 12px 12px 4px; border-bottom: 1px solid var(--line); }
+  .crit-table td { display: block; border: 0; padding: 0; background: transparent !important; }
+  .crit-table td.c-id { font-weight: 600; }
+  .crit-table td.c-ax { color: var(--dim); }
+  .crit-table td.c-nm { grid-column: 1 / -1; font-weight: 600; margin: 2px 0 4px; }
+  .crit-table td.c-nm .sub { font-weight: 400; }
+  .crit-table td[data-l] { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 12px; font-size: 12.5px; }
+  .crit-table td[data-l]::before { content: attr(data-l); color: var(--dim); flex: none; }
+  .crit-table tr.sev-bad td:first-child, .crit-table tr.sev-warn td:first-child { box-shadow: none; }
+  .crit-table tr.sev-bad { box-shadow: inset -3px 0 0 var(--red); }
+  .crit-table tr.sev-warn { box-shadow: inset -3px 0 0 var(--amber); }
+}
 .cmp { display: grid; gap: 10px; }
 .cmp-row { display: grid; grid-template-columns: minmax(140px, 260px) minmax(0, 1fr) 54px 96px; gap: 10px; align-items: center; font-size: 13px; }
 .cmp-row.me { font-weight: 600; }
@@ -223,8 +258,17 @@ td.nw { white-space: nowrap; }
   .search { display: none; }
   .who div { display: none; }
   .verdict { grid-template-columns: 1fr; }
-  .axrow { grid-template-columns: 70px minmax(0, 1fr) 50px; }
-  .axrow .w { display: none; }
+  .score { justify-content: center; }
+  .axrow { grid-template-columns: 62px minmax(0, 1fr) 48px 78px; gap: 8px; }
+  .axrow.axhead span:nth-child(2) { white-space: nowrap; }
+  .axrow.axsum .sub { display: none; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .kpi { padding: 12px; }
+  .kpi .v { font-size: 22px; }
+  .kpi .kh { flex-wrap: wrap; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; width: 100%; }
+  .step { padding: 6px 8px; gap: 6px; font-size: 12px; justify-content: center; }
+  .step b { width: 20px; height: 20px; font-size: 11px; }
   .cmp-row { grid-template-columns: minmax(0, 1fr) 54px 90px; }
   .cmp-row .track { grid-column: 1 / -1; grid-row: 2; }
   .axis-head { grid-template-columns: 1fr 74px; }
@@ -416,24 +460,30 @@ const dfs = new Intl.DateTimeFormat('ar-SA-u-nu-latn-ca-gregory', { day: 'numeri
 const fd = (s) => df.format(new Date(s + 'T00:00:00Z'));
 const fds = (s) => dfs.format(new Date(s + 'T00:00:00Z'));
 const money = (v) => `${nf.format(Math.round(v))} ر.س`;
+// Accepts Arabic-Indic digits and the Arabic decimal comma, as a person may type them on an Arabic keyboard.
+const toNum = (v) => { const s = String(v ?? '').trim().replace(/[٠-٩]/g, (d) => d.charCodeAt(0) - 0x660).replace(/[۰-۹]/g, (d) => d.charCodeAt(0) - 0x6f0).replace(/[٫,]/g, '.'); return s === '' ? NaN : Number(s); };
+// Arabic counted nouns: 1 يوم واحد، 2 يومان، 3–10 أيام، 11+ يومًا.
+const cnt = (n, one, two, few, many) => { const a = Math.abs(n); return a === 1 ? one : a === 2 ? two : a >= 3 && a <= 10 ? `${n} ${few}` : `${n} ${many}`; };
+const dAr = (n) => cnt(n, 'يوم واحد', 'يومان', 'أيام', 'يومًا');
+const dArB = (n) => cnt(n, 'يوم واحد', 'يومين', 'أيام', 'يومًا');
 const band3 = (v, ok, warn) => (v >= ok ? 'ok' : v >= warn ? 'warn' : 'bad');
 const RES = { ok: 'ممتثل', warn: 'ملاحظة', bad: 'مخالفة' };
 const RAG = { ok: 'أخضر', warn: 'أصفر', bad: 'أحمر' };
 
 const CRITERIA = [
-  { id: 'T1', axis: 'time', imp: 1, name: 'خطة أساسية معتمدة قبل بدء التنفيذ', eval: (p) => ({ r: p.baselineApproved <= p.start ? 'ok' : 'bad', thr: 'الاعتماد قبل تاريخ البدء', act: p.baselineApproved <= p.start ? `اعتُمدت قبل البدء بـ ${days(p.baselineApproved, p.start)} يوم` : `اعتُمدت بعد البدء بـ ${days(p.start, p.baselineApproved)} يومًا` }) },
+  { id: 'T1', axis: 'time', imp: 1, name: 'خطة أساسية معتمدة قبل بدء التنفيذ', eval: (p) => ({ r: p.baselineApproved <= p.start ? 'ok' : 'bad', thr: 'الاعتماد قبل تاريخ البدء', act: p.baselineApproved <= p.start ? `اعتُمدت قبل البدء بـ ${dArB(days(p.baselineApproved, p.start))}` : `اعتُمدت بعد البدء بـ ${dArB(days(p.start, p.baselineApproved))}` }) },
   { id: 'T2', axis: 'time', imp: 3, name: 'مؤشر أداء الجدول (SPI)', eval: (p, c, k) => ({ r: band3(k.spi, c.spiTarget, c.spiTarget - 0.05), thr: `${nf2.format(c.spiTarget)} فأكثر · ملاحظة حتى ${nf2.format(c.spiTarget - 0.05)}`, act: nf2.format(k.spi) }) },
-  { id: 'T3', axis: 'time', imp: 2, name: `المعالم المنجزة في موعدها`, eval: (p, c, k) => (k.msDone ? { r: band3(k.msOnTimePct, 80, 50), thr: `80% فأكثر بسماح ${c.msTolerance} أيام`, act: `${k.msOnTime} من ${k.msDone} (${nf.format(k.msOnTimePct)}%)` } : { r: 'ok', thr: `80% فأكثر بسماح ${c.msTolerance} أيام`, act: 'لا معالم منجزة بعد' }) },
-  { id: 'T4', axis: 'time', imp: 3, name: 'لا يتحرك تاريخ دون طلب تمديد معتمد', eval: (p, c, k) => ({ r: k.silent ? 'bad' : 'ok', thr: 'صفر حالات', act: k.silent ? `${k.silent} تحريك بلا طلب (${k.silentDays} يومًا)` : 'لا يوجد' }) },
+  { id: 'T3', axis: 'time', imp: 2, name: `المعالم المنجزة في موعدها`, eval: (p, c, k) => (k.msDone ? { r: band3(k.msOnTimePct, 80, 50), thr: `80% فأكثر بسماح ${dArB(c.msTolerance)}`, act: `${k.msOnTime} من ${k.msDone} (${nf.format(k.msOnTimePct)}%)` } : { r: 'ok', thr: `80% فأكثر بسماح ${dArB(c.msTolerance)}`, act: 'لا معالم منجزة بعد' }) },
+  { id: 'T4', axis: 'time', imp: 3, name: 'لا يتحرك تاريخ دون طلب تمديد معتمد', eval: (p, c, k) => ({ r: k.silent ? 'bad' : 'ok', thr: 'صفر حالات', act: k.silent ? `${k.silent} تحريك بلا طلب (${dAr(k.silentDays)})` : 'لا يوجد' }) },
   { id: 'B1', axis: 'budget', imp: 1, name: 'ميزانية معتمدة ومفصّلة على البنود', eval: (p) => { const s = p.budget.reduce((a, b) => a + b.bac, 0); return { r: s === p.bac ? 'ok' : 'bad', thr: 'بنود مجموعها = ميزانية المشروع', act: `${p.budget.length} بنود بإجمالي ${money(s)}` }; } },
   { id: 'B2', axis: 'budget', imp: 3, name: 'مؤشر أداء التكلفة (CPI)', eval: (p, c, k) => ({ r: band3(k.cpi, c.cpiTarget, c.cpiTarget - 0.05), thr: `${nf2.format(c.cpiTarget)} فأكثر · ملاحظة حتى ${nf2.format(c.cpiTarget - 0.05)}`, act: nf2.format(k.cpi) }) },
   { id: 'B3', axis: 'budget', imp: 2, name: 'لا صرف يتجاوز ميزانية البند', eval: (p) => { const over = p.budget.filter((b) => b.ac > b.bac); const fast = p.budget.filter((b) => b.ac > b.pv * 1.15); return { r: over.length ? 'bad' : fast.length ? 'warn' : 'ok', thr: 'صفر تجاوزات · ملاحظة إن سبق الصرف المخطط بـ 15%', act: over.length ? `تجاوز: ${over.map((b) => b.item).join('، ')}` : fast.length ? `صرف أسرع من المخطط: ${fast.map((b) => b.item).join('، ')}` : 'لا تجاوزات' }; } },
   { id: 'W1', axis: 'works', imp: 3, name: 'الإنجاز الفعلي مقابل المخطط حتى تاريخه', eval: (p, c) => { const ratio = (p.actualPct / p.plannedPct) * 100; return { r: band3(ratio, c.progressRatio, c.progressRatio - 15), thr: `${c.progressRatio}% من المخطط فأكثر`, act: `${nf.format(p.actualPct)}% من ${nf.format(p.plannedPct)}% (${nf.format(ratio)}%)` }; } },
   { id: 'W2', axis: 'works', imp: 1, name: 'لكل مهمة مسؤول وتاريخ نهاية', eval: (p) => { const pct = ((p.tasks - p.tasksNoOwner) / p.tasks) * 100; return { r: band3(pct, 95, 85), thr: '95% من المهام فأكثر', act: `${p.tasks - p.tasksNoOwner} من ${p.tasks} (${nf.format(pct)}%)` }; } },
-  { id: 'G1', axis: 'gov', imp: 2, name: 'تحديث حالة دوري من مدير المشروع', eval: (p, c) => { const d = days(p.lastUpdate, AS_OF); return { r: d <= c.updateDays ? 'ok' : d <= c.updateDays * 2 ? 'warn' : 'bad', thr: `كل ${c.updateDays} أيام · مخالفة بعد ${c.updateDays * 2}`, act: `آخر تحديث قبل ${d} يومًا (${fds(p.lastUpdate)})` }; } },
+  { id: 'G1', axis: 'gov', imp: 2, name: 'تحديث حالة دوري من مدير المشروع', eval: (p, c) => { const d = days(p.lastUpdate, AS_OF); return { r: d <= c.updateDays ? 'ok' : d <= c.updateDays * 2 ? 'warn' : 'bad', thr: `كل ${dAr(c.updateDays)} · مخالفة بعد ${c.updateDays * 2}`, act: `آخر تحديث قبل ${dArB(d)} (${fds(p.lastUpdate)})` }; } },
   { id: 'G2', axis: 'gov', imp: 2, name: 'التقييم الذاتي يطابق المؤشرات المحسوبة', eval: (p, c, k) => { const lv = { 'أخضر': 0, 'أصفر': 1, 'أحمر': 2 }; const gap = lv[k.rag] - lv[p.selfRag]; return { r: gap <= 0 ? 'ok' : gap === 1 ? 'warn' : 'bad', thr: 'لا يكون الذاتي أفضل من المحسوب', act: `المدير: ${p.selfRag} · المحسوب: ${k.rag}` }; } },
   { id: 'K1', axis: 'blockers', imp: 3, name: 'لا عائق يتجاوز مهلته دون تصعيد', eval: (p, c, k) => ({ r: k.overdueUnesc ? 'bad' : 'ok', thr: 'صفر عوائق', act: k.overdueUnesc ? `${k.overdueUnesc} عائق: ${k.overdueUnescNames}` : 'لا يوجد' }) },
-  { id: 'K2', axis: 'blockers', imp: 1, name: 'متوسط عمر العوائق المفتوحة', eval: (p, c, k) => ({ r: !k.open ? 'ok' : k.avgAge <= c.blockerAge ? 'ok' : k.avgAge <= c.blockerAge * 2 ? 'warn' : 'bad', thr: `${c.blockerAge} يومًا فأقل`, act: k.open ? `${nf.format(k.avgAge)} يومًا لـ ${k.open} عوائق` : 'لا عوائق مفتوحة' }) },
+  { id: 'K2', axis: 'blockers', imp: 1, name: 'متوسط عمر العوائق المفتوحة', eval: (p, c, k) => ({ r: !k.open ? 'ok' : k.avgAge <= c.blockerAge ? 'ok' : k.avgAge <= c.blockerAge * 2 ? 'warn' : 'bad', thr: `${dAr(c.blockerAge)} فأقل`, act: k.open ? `${nf.format(k.avgAge)} يومًا لـ ${cnt(k.open, 'عائق واحد', 'عائقين', 'عوائق', 'عائقًا')}` : 'لا عوائق مفتوحة' }) },
 ];
 
 function kpis(p, c) {
@@ -536,7 +586,8 @@ function go(step) {
   if (step >= 2 && !st.pid) { toast('اختر مشروعًا أولًا.'); step = 1; }
   if (step === 3 && sumW() !== 100) { toast('مجموع أوزان المحاور يجب أن يكون 100.'); step = 2; }
   st.step = step; save(); render();
-  document.getElementById('content').scrollIntoView({ block: 'start' });
+  // Each step opens at its top, with the page title and stepper in view (not hidden under the sticky bar).
+  window.scrollTo({ top: 0 });
 }
 
 function render() {
@@ -611,7 +662,7 @@ function viewWeights(p) {
   };
   const refreshAll = () => { save(); const g = left.querySelector('.guide'); if (g) { const n = scoringGuide(); n.open = g.open; g.replaceWith(n); } left.querySelectorAll('[data-axis-in]').forEach((i) => { i.value = st.w[i.dataset.axisIn]; }); left.querySelectorAll('[data-share]').forEach(updShare); left.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.preset === st.preset))); refreshRight(); };
   const updShare = (el) => { const cr = CRITERIA.find((c) => c.id === el.dataset.share); const impSum = CRITERIA.filter((x) => x.axis === cr.axis).reduce((s, x) => s + st.imp[x.id], 0); el.textContent = `${nf.format((st.w[cr.axis] * st.imp[cr.id]) / impSum)} نقطة`; };
-  const setW = (axis, v) => { st.w[axis] = Math.max(0, Math.min(100, Math.round(Number(v) || 0))); st.preset = 'custom'; refreshAll(); };
+  const setW = (axis, v) => { st.w[axis] = Math.max(0, Math.min(100, Math.round(toNum(v) || 0))); st.preset = 'custom'; refreshAll(); };
 
   left.append(...[
     h('h2', {}, 'المعايير والأوزان'),
@@ -622,7 +673,7 @@ function viewWeights(p) {
     h('div', { style: 'height:14px' }),
     AXES.map((a) => {
       const range = h('input', { type: 'range', min: '0', max: '60', step: '1', value: st.w[a.id], 'aria-label': `وزن ${a.name}`, 'data-axis-in': a.id, oninput: (e) => setW(a.id, e.target.value) });
-      const num = h('input', { type: 'number', lang: 'en', class: 'num-in tab', min: '0', max: '100', value: st.w[a.id], 'aria-label': `وزن ${a.name} رقمًا`, 'data-axis-in': a.id, id: `w-${a.id}`, onchange: (e) => setW(a.id, e.target.value) });
+      const num = h('input', { type: 'text', inputmode: 'numeric', dir: 'ltr', autocomplete: 'off', class: 'num-in tab', value: st.w[a.id], 'aria-label': `وزن ${a.name} رقمًا`, 'data-axis-in': a.id, id: `w-${a.id}`, onchange: (e) => setW(a.id, e.target.value) });
       return h('div', { class: 'axis' },
         h('div', { class: 'axis-head' }, h('div', { class: 'nm' }, h('b', {}, a.name), h('span', { class: 'sub' }, a.hint)), range, num),
         h('details', {}, h('summary', {}, `المعايير (${CRITERIA.filter((c) => c.axis === a.id).length}): ماذا تقيس وكيف تُحسب`),
@@ -640,7 +691,10 @@ function viewWeights(p) {
       ['msTolerance', 'سماح تأخر المعلَم (أيام)', 0, 30, 1], ['progressRatio', 'الإنجاز المقبول من المخطط (%)', 50, 100, 1],
       ['updateDays', 'دورية تحديث الحالة (أيام)', 1, 30, 1], ['blockerAge', 'أقصى متوسط لعمر العائق (أيام)', 3, 60, 1],
       ['okBand', 'حدّ «ممتثل» للدرجة', 50, 100, 1], ['warnBand', 'حدّ «يحتاج متابعة»', 20, 95, 1],
-    ].map(([k, label, min, max, step]) => h('label', { for: `cfg-${k}` }, label, h('input', { type: 'number', lang: 'en', id: `cfg-${k}`, class: 'tab', min: String(min), max: String(max), step: String(step), value: st.cfg[k], onchange: (e) => { const v = Number(e.target.value); if (Number.isFinite(v)) { st.cfg[k] = Math.min(max, Math.max(min, v)); e.target.value = st.cfg[k]; } refreshAll(); } }))))),
+    ].map(([k, label, min, max, step]) => h('label', { for: `cfg-${k}` }, label, h('input', { type: 'text', inputmode: step < 1 ? 'decimal' : 'numeric', dir: 'ltr', autocomplete: 'off', id: `cfg-${k}`, class: 'tab', value: st.cfg[k], onchange: (e) => { const v = toNum(e.target.value); if (Number.isFinite(v)) { st.cfg[k] = Math.min(max, Math.max(min, step < 1 ? Math.round(v * 100) / 100 : Math.round(v))); if (v < min || v > max) toast(`القيمة المسموحة من ${min} إلى ${max}.`); }
+        // «يحتاج متابعة» must stay below «ممتثل», or the verdict bands overlap.
+        if (st.cfg.warnBand >= st.cfg.okBand) { if (k === 'okBand') st.cfg.warnBand = Math.max(20, st.cfg.okBand - 5); else st.cfg.warnBand = st.cfg.okBand - 5; toast('حدّ «يحتاج متابعة» يجب أن يكون أقل من حدّ «ممتثل».'); const wb = document.getElementById('cfg-warnBand'); if (wb) wb.value = st.cfg.warnBand; }
+        e.target.value = st.cfg[k]; refreshAll(); } }))))),
     h('div', { class: 'row', style: 'margin-top:16px;justify-content:space-between' },
       iconBtn('', 'back', 'تغيير المشروع', () => go(1)),
       iconBtn('', '', 'استعادة الإعدادات المقترحة', () => { st.preset = 'balanced'; st.w = { ...PRESETS.balanced.w }; st.imp = { ...DEFAULT_IMP }; st.cfg = { ...DEFAULT_CFG }; render(); toast('استُعيدت الأوزان والعتبات المقترحة.'); }))].flat());
@@ -685,7 +739,7 @@ function viewReport(p) {
   const gaps = ev.rows.filter((r) => r.r !== 'ok');
   const sentence = h('p', { class: 'lede' },
     'المشروع ', h('b', { class: `${ev.grade}-t` }, `«${GRADE[ev.grade]}»`), ' بدرجة ', h('b', { class: 'tab' }, nf.format(ev.score)), ' من 100. ',
-    k.slip > 0 ? ['النهاية المتوقعة متأخرة ', h('b', { class: 'tab' }, k.slip), ' يومًا عن الخطة المعتمدة'] : 'النهاية المتوقعة في موعد الخطة المعتمدة أو قبله',
+    k.slip > 0 ? ['النهاية المتوقعة متأخرة ', h('b', { class: 'tab' }, cnt(k.slip, 'يومًا واحدًا', 'يومين', 'أيام', 'يومًا')), ' عن الخطة المعتمدة'] : 'النهاية المتوقعة في موعد الخطة المعتمدة أو قبله',
     gaps.length ? ['، وفيه ', h('b', { class: 'tab' }, gaps.filter((g) => g.r === 'bad').length), ' مخالفة و', h('b', { class: 'tab' }, gaps.filter((g) => g.r === 'warn').length), ' ملاحظة من 13 معيارًا.'] : '، ولا ثغرات في المعايير الثلاثة عشر.');
 
   const toolbar = h('div', { class: 'toolbar no-pdf' },
@@ -708,8 +762,8 @@ function viewReport(p) {
       .filter((r) => (capturing ? true : st.fRes === 'all' ? true : st.fRes === 'gaps' ? r.r !== 'ok' : r.r === st.fRes))
       .sort((a, b) => order[a.r] - order[b.r] || b.share - a.share);
     critBody.replaceChildren(...rows.map((r) => h('tr', { class: r.r !== 'ok' ? `sev-${r.r}` : '' },
-      h('td', { class: 'nw tab' }, r.id), h('td', { class: 'nw' }, r.axisName), h('td', {}, r.name, h('div', { class: 'sub' }, EXPLAIN[r.id].what)), h('td', {}, r.thr), h('td', {}, r.act),
-      h('td', { class: 'nw' }, pill(r.r)), h('td', { class: 'nw tab' }, `${nf.format(r.earned)} / ${nf.format(r.share)}`))));
+      h('td', { class: 'nw tab c-id' }, r.id), h('td', { class: 'nw c-ax' }, r.axisName), h('td', { class: 'c-nm' }, r.name, h('div', { class: 'sub' }, EXPLAIN[r.id].what)), h('td', { 'data-l': 'العتبة' }, r.thr), h('td', { 'data-l': 'الوضع الفعلي' }, r.act),
+      h('td', { class: 'nw', 'data-l': 'النتيجة' }, pill(r.r)), h('td', { class: 'nw tab', 'data-l': 'النقاط' }, `${nf.format(r.earned)} من ${nf.format(r.share)}`))));
     critCount.textContent = `يُعرض ${rows.length} من ${ev.rows.length} معيارًا`;
   };
   fillCrit();
@@ -719,8 +773,7 @@ function viewReport(p) {
   const extR = { 'معتمد': 'ok', 'قيد الاعتماد': 'warn', 'بلا طلب': 'bad', 'مرفوض': 'bad' };
   const blkRows = p.blockers.map((b) => { let s = b.status === 'محلول' ? ['ok', 'محلول'] : b.due < AS_OF ? (b.escalated ? ['warn', 'تجاوز المهلة · مُصعَّد'] : ['bad', 'تجاوز المهلة · دون تصعيد']) : ['neutral', 'مفتوح']; return { ...b, age: b.status === 'محلول' ? '—' : days(b.opened, AS_OF), s }; })
     .sort((a, b) => ({ bad: 0, warn: 1, neutral: 2, ok: 3 }[a.s[0]] - { bad: 0, warn: 1, neutral: 2, ok: 3 }[b.s[0]]));
-  const maxB = Math.max(...p.budget.map((b) => Math.max(b.pv, b.ac)));
-
+  
   const report = h('div', { class: 'report', id: 'report' },
     h('div', { class: 'pdf-only' }, h('div', { class: 'row', style: 'justify-content:space-between;border-bottom:2px solid #164076;padding-bottom:10px;margin-bottom:6px' },
       h('img', { src: document.querySelector('.logo-light').src, alt: 'نزلي', style: 'height:34px' }),
@@ -734,31 +787,43 @@ function viewReport(p) {
           .map(([t, d]) => h('div', {}, h('dt', {}, t), h('dd', {}, d))))),
     h('section', { class: 'card' },
       h('div', { class: 'verdict' },
-        h('div', { class: 'score' }, h('small', {}, 'مؤشر الامتثال'), h('span', { class: `big tab ${ev.grade}-t` }, nf.format(ev.score)), h('small', {}, `من 100 · ممتثل من ${st.cfg.okBand}، ومتابعة من ${st.cfg.warnBand}`), pill(ev.grade, GRADE[ev.grade])),
-        h('div', { class: 'axbars' }, h('h3', {}, 'الدرجة حسب المحور'),
-          ev.axes.map((a) => { const g = a.pct == null ? 'neutral' : band3(a.pct, st.cfg.okBand, st.cfg.warnBand); return h('div', { class: 'axrow' }, h('span', {}, a.name), h('span', { class: 'track', role: 'img', 'aria-label': `${a.name} ${a.pct == null ? 'بلا وزن' : nf.format(a.pct)}` }, h('i', { style: `width:${a.pct ?? 0}%;background:var(--${g === 'ok' ? 'live' : g === 'warn' ? 'amber' : g === 'bad' ? 'red' : 'faint'})` })), h('span', { class: 'tab' }, a.pct == null ? '—' : `${nf.format(a.pct)}%`), h('span', { class: 'w tab' }, `وزن ${a.w}`)); })))),
+        h('div', { class: 'score' }, scoreRing(ev.score, ev.grade), h('div', { class: 'score-cap' }, h('small', {}, 'مؤشر الامتثال من 100'), pill(ev.grade, GRADE[ev.grade]), h('small', { class: 'bands' }, `ممتثل من ${st.cfg.okBand} · متابعة من ${st.cfg.warnBand}`))),
+        h('div', { class: 'axbars' }, h('div', { class: 'axrow axhead' }, h('span', {}, 'المحور'), h('span', {}, 'نسبة تحقق المحور'), h('span', {}, ''), h('span', {}, 'النقاط من وزنه')),
+          ev.axes.map((a) => { const g = a.pct == null ? 'neutral' : band3(a.pct, st.cfg.okBand, st.cfg.warnBand); return h('div', { class: 'axrow' }, h('span', {}, a.name), h('span', { class: 'track', role: 'img', 'aria-label': `${a.name} ${a.pct == null ? 'بلا وزن' : nf.format(a.pct)}` }, h('i', { style: `width:${a.pct ?? 0}%;background:var(--${g === 'ok' ? 'live' : g === 'warn' ? 'amber' : g === 'bad' ? 'red' : 'faint'})` })), h('span', { class: 'tab' }, a.pct == null ? '—' : `${nf.format(a.pct)}%`), h('span', { class: 'w tab' }, h('b', {}, nf2.format(a.earned)), ` من ${a.w}`)); }),
+          h('div', { class: 'axrow axsum' }, h('span', {}, 'المجموع'), h('span', { class: 'sub' }, 'مؤشر الامتثال = مجموع نقاط المحاور'), h('span', {}, ''), h('span', { class: 'w tab' }, h('b', {}, nf2.format(ev.score)), ' من 100'))))),
     h('section', { class: 'kpis' },
       kpiTile('مؤشر أداء الجدول (SPI)', nf2.format(k.spi), '', `الهدف ${nf2.format(st.cfg.spiTarget)} فأكثر`, band3(k.spi, st.cfg.spiTarget, st.cfg.spiTarget - 0.05)),
       kpiTile('مؤشر أداء التكلفة (CPI)', nf2.format(k.cpi), '', `الهدف ${nf2.format(st.cfg.cpiTarget)} فأكثر`, band3(k.cpi, st.cfg.cpiTarget, st.cfg.cpiTarget - 0.05)),
-      kpiTile('الانزلاق عن النهاية المعتمدة', String(k.slip), 'يوم', `تمديد معتمد ${k.extAppr} يومًا · قيد الاعتماد ${k.extPend}`, k.slip <= 0 ? 'ok' : k.slip <= 7 ? 'warn' : 'bad'),
-      kpiTile('التكلفة المتوقعة عند الإنجاز', nf.format(k.eac), 'ر.س', `الفرق عن الميزانية ${nf.format(k.vac)} ر.س`, k.vac >= 0 ? 'ok' : k.vac > -0.05 * p.bac ? 'warn' : 'bad'),
+      kpiTile('الانزلاق عن النهاية المعتمدة', k.slip > 0 ? `+${k.slip}` : String(k.slip), 'يوم', `تمديدات: معتمد ${k.extAppr} · قيد الاعتماد ${k.extPend} · بلا طلب ${k.silentDays} (بالأيام)`, k.slip <= 0 ? 'ok' : k.slip <= 7 ? 'warn' : 'bad'),
+      kpiTile('التكلفة المتوقعة عند الإنجاز', nf.format(k.eac), 'ر.س', k.vac >= 0 ? `أقل من الميزانية بـ ${money(k.vac)}` : `تجاوز متوقع للميزانية ${money(-k.vac)}`, k.vac >= 0 ? 'ok' : k.vac > -0.05 * p.bac ? 'warn' : 'bad'),
       kpiTile('الإنجاز الفعلي', nf.format(p.actualPct), '%', `المخطط حتى اليوم ${nf.format(p.plannedPct)}%`, band3((p.actualPct / p.plannedPct) * 100, st.cfg.progressRatio, st.cfg.progressRatio - 15)),
       kpiTile('العوائق المفتوحة', String(k.open), '', `تجاوز مهلته ${k.overdue} · دون تصعيد ${k.overdueUnesc}`, k.overdueUnesc ? 'bad' : k.overdue ? 'warn' : 'ok')),
     h('section', { class: 'card' },
-      h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:8px' }, h('div', {}, h('h2', {}, 'المعايير والثغرات المكتشفة'), h('p', { class: 'sub' }, 'النقاط = المكتسب / نصيب المعيار من وزن محوره.')),
+      h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:8px' }, h('div', {}, h('h2', {}, 'المعايير والثغرات المكتشفة'), h('p', { class: 'sub' }, 'النقاط: ما أخذه المعيار من نصيبه في وزن محوره.')),
         h('div', { class: 'filters no-pdf' }, h('label', { for: 'f-res' }, 'النتيجة', resSel), h('label', { for: 'f-ax' }, 'المحور', axSel), critCount)),
-      h('div', { class: 'tablewrap' }, h('table', {}, h('thead', {}, h('tr', {}, ['الرمز', 'المحور', 'المعيار', 'العتبة', 'الوضع الفعلي', 'النتيجة', 'النقاط'].map((t) => h('th', {}, t)))), critBody))),
+      h('div', { class: 'tablewrap' }, h('table', { class: 'crit-table' }, h('thead', {}, h('tr', {}, ['الرمز', 'المحور', 'المعيار', 'العتبة', 'الوضع الفعلي', 'النتيجة', 'النقاط'].map((t) => h('th', {}, t)))), critBody))),
     h('section', { class: 'grid2' },
       h('div', { class: 'card' }, h('h3', {}, 'الأداء الأسبوعي: الجدول والتكلفة'),
         h('div', { class: 'ckey' }, h('span', {}, h('i', { style: 'background:var(--chart-1)' }), 'SPI'), h('span', {}, h('i', { style: 'background:var(--chart-2)' }), 'CPI'), h('span', {}, h('i', { style: 'background:var(--faint)' }), `العتبة ${nf2.format(st.cfg.spiTarget)}`)),
-        h('div', { class: 'chart', id: 'c-perf' })),
+        h('div', { class: 'chart', id: 'c-perf' }),
+        (() => { const tr = p.trend, a = tr[0], z = tr[tr.length - 1]; const mv = (k2) => (z[k2] < a[k2] ? 'انخفض' : z[k2] > a[k2] ? 'ارتفع' : 'ثبت'); return h('div', { class: 'trend-sum' },
+          h('div', {}, h('span', {}, 'SPI'), h('b', { class: 'tab' }, `${nf2.format(a.spi)} ← ${nf2.format(z.spi)}`), h('small', {}, `${mv('spi')} خلال ${tr.length} أسابيع`)),
+          h('div', {}, h('span', {}, 'CPI'), h('b', { class: 'tab' }, `${nf2.format(a.cpi)} ← ${nf2.format(z.cpi)}`), h('small', {}, `${mv('cpi')} خلال ${tr.length} أسابيع`)),
+          h('div', {}, h('span', {}, 'أسابيع SPI تحت العتبة'), h('b', { class: 'tab' }, `${tr.filter((r) => r.spi < st.cfg.spiTarget).length} من ${tr.length}`), h('small', {}, `العتبة ${nf2.format(st.cfg.spiTarget)}`))); })()),
       h('div', { class: 'card' }, h('h3', {}, 'الميزانية حسب البند'),
-        h('div', { class: 'ckey' }, h('span', {}, h('i', { class: 'box', style: 'background:var(--chart-3)' }), 'المخطط حتى اليوم'), h('span', {}, h('i', { class: 'box', style: 'background:var(--chart-1)' }), 'المصروف'), h('span', {}, h('i', { class: 'box', style: 'background:var(--red)' }), 'تجاوز البند')),
-        h('div', { class: 'bud' }, p.budget.map((b) => h('div', { class: 'bud-row' },
-          h('div', { class: 'hd' }, h('b', {}, b.item), h('span', { class: 'tab' }, `ميزانية البند ${money(b.bac)}`)),
-          h('div', { class: 'bline' }, h('span', { class: 'tr' }, h('i', { style: `width:${(b.pv / maxB) * 100}%;background:var(--chart-3)` })), h('span', { class: 'tab' }, money(b.pv))),
-          h('div', { class: 'bline' }, h('span', { class: 'tr' }, h('i', { style: `width:${(b.ac / maxB) * 100}%;background:${b.ac > b.bac ? 'var(--red)' : 'var(--chart-1)'}` })), h('span', { class: 'tab' }, money(b.ac)))))))),
-    h('section', { class: 'card' }, h('h2', {}, 'المعالم: المعتمد مقابل الفعلي والمتوقع'), h('p', { class: 'sub', style: 'margin-bottom:8px' }, `المعلَم المنجز يُعد في موعده إن لم يتأخر أكثر من ${st.cfg.msTolerance} أيام.`),
+        h('p', { class: 'sub' }, 'إجمالي المصروف ', h('b', { class: 'tab' }, money(p.ac)), ' من ', h('b', { class: 'tab' }, money(p.bac)), ' · المخطط حتى اليوم ', h('b', { class: 'tab' }, money(p.pv))),
+        h('div', { class: 'ckey' }, h('span', {}, h('i', { class: 'box', style: 'background:var(--chart-1)' }), 'المصروف'), h('span', {}, h('i', { class: 'mk' }), 'المخطط حتى اليوم'), h('span', {}, h('i', { class: 'box', style: 'background:var(--amber)' }), 'أسرع من المخطط بأكثر من 15%'), h('span', {}, h('i', { class: 'box', style: 'background:var(--red)' }), 'تجاوز ميزانية البند')),
+        h('div', { class: 'bud' }, p.budget.map((b) => {
+          const st2 = b.ac > b.bac ? 'bad' : b.ac > b.pv * 1.15 ? 'warn' : 'ok';
+          const diff = b.ac - b.pv;
+          return h('div', { class: 'bud-row' },
+            h('div', { class: 'hd' }, h('b', {}, b.item), h('span', { class: 'tab' }, `${money(b.ac)} من ${money(b.bac)} · ${nf.format((b.ac / b.bac) * 100)}%`)),
+            h('span', { class: 'btrack', role: 'img', 'aria-label': `${b.item}: مصروف ${money(b.ac)}، مخطط ${money(b.pv)}، ميزانية ${money(b.bac)}` },
+              h('i', { class: 'fill', style: `width:${Math.min(100, (b.ac / b.bac) * 100)}%;background:var(--${st2 === 'bad' ? 'red' : st2 === 'warn' ? 'amber' : 'chart-1'})` }),
+              h('i', { class: 'mk', style: `inset-inline-start:calc(${Math.min(100, (b.pv / b.bac) * 100)}% - 1px)` })),
+            h('div', { class: 'ft' }, h('span', {}, 'المخطط حتى اليوم ', h('span', { class: 'tab' }, money(b.pv))), h('span', { class: `tab ${diff > 0 ? (st2 === 'ok' ? 'dim-t' : st2 + '-t') : 'ok-t'}` }, diff > 0 ? `+${money(diff)} عن المخطط` : diff < 0 ? `${money(-diff)} أقل من المخطط` : 'مطابق للمخطط')));
+        })))),
+    h('section', { class: 'card' }, h('h2', {}, 'المعالم: المعتمد مقابل الفعلي والمتوقع'), h('p', { class: 'sub', style: 'margin-bottom:8px' }, `المعلَم المنجز يُعد في موعده إن لم يتأخر أكثر من ${dArB(st.cfg.msTolerance)}.`),
       h('div', { class: 'tablewrap' }, h('table', {}, h('thead', {}, h('tr', {}, ['الرمز', 'المعلَم', 'المسؤول', 'المعتمد', 'الفعلي أو المتوقع', 'الفرق (يوم)', 'الحالة'].map((t) => h('th', {}, t)))),
         h('tbody', {}, p.milestones.map((m) => { const v = days(m.baseline, m.current); const [r, t] = msState(m); return h('tr', { class: r !== 'ok' ? `sev-${r}` : '' }, h('td', { class: 'nw tab' }, m.id), h('td', {}, m.name), h('td', {}, m.owner), h('td', { class: 'nw' }, fd(m.baseline)), h('td', { class: 'nw' }, fd(m.current)), h('td', { class: `nw tab ${v <= 0 ? 'ok' : v <= st.cfg.msTolerance ? 'warn' : 'bad'}-t` }, v > 0 ? `+${v}` : String(v)), h('td', {}, pill(r, t))); }))))),
     h('section', { style: 'display:grid;gap:18px' },
@@ -773,7 +838,7 @@ function viewReport(p) {
         h('span', { class: 'track', style: 'height:10px;border-radius:999px;background:var(--panel2);position:relative;overflow:hidden;display:block' }, h('i', { style: `position:absolute;inset-block:0;inset-inline-start:0;border-radius:999px;width:${x.score}%;background:var(--${x.grade === 'ok' ? 'live' : x.grade === 'warn' ? 'amber' : 'red'})` })),
         h('span', { class: 'tab' }, nf.format(x.score)), pill(x.grade, GRADE[x.grade]))))),
     h('section', { class: 'card' }, h('h3', {}, 'الأوزان والعتبات المستخدمة في هذا التقرير'),
-      h('div', { class: 'weights-used', style: 'margin-top:8px' }, AXES.map((a) => h('span', { class: 'pill neutral tab' }, `${a.name} ${st.w[a.id]}`)), h('span', { class: 'pill neutral tab' }, `SPI ≥ ${nf2.format(st.cfg.spiTarget)}`), h('span', { class: 'pill neutral tab' }, `CPI ≥ ${nf2.format(st.cfg.cpiTarget)}`), h('span', { class: 'pill neutral tab' }, `تحديث كل ${st.cfg.updateDays} أيام`), h('span', { class: 'pill neutral tab' }, `سماح المعالم ${st.cfg.msTolerance} أيام`)),
+      h('div', { class: 'weights-used', style: 'margin-top:8px' }, AXES.map((a) => h('span', { class: 'pill neutral tab' }, `${a.name} ${st.w[a.id]}`)), h('span', { class: 'pill neutral tab' }, `SPI ≥ ${nf2.format(st.cfg.spiTarget)}`), h('span', { class: 'pill neutral tab' }, `CPI ≥ ${nf2.format(st.cfg.cpiTarget)}`), h('span', { class: 'pill neutral tab' }, `تحديث كل ${dAr(st.cfg.updateDays)}`), h('span', { class: 'pill neutral tab' }, `سماح المعالم ${dAr(st.cfg.msTolerance)}`)),
       h('p', { class: 'sub', style: 'margin-top:8px' }, 'SPI = قيمة المنجز ÷ قيمة المخطط حتى اليوم · CPI = قيمة المنجز ÷ التكلفة الفعلية · التكلفة المتوقعة = الميزانية ÷ CPI.')),
     h('section', { class: 'card' }, h('h2', {}, 'طريقة احتساب المعايير'),
       h('p', { class: 'sub', style: 'margin-bottom:8px' }, 'نصيب المعيار = وزن محوره × أهميته ÷ مجموع أهميات معايير المحور. ممتثل يأخذ نصيبه كاملًا، وملاحظة نصفه، ومخالفة صفرًا. مؤشر الامتثال = مجموع ما أخذته المعايير.'),
@@ -783,7 +848,20 @@ function viewReport(p) {
   return h('div', { style: 'display:grid;gap:16px' }, toolbar, report);
 }
 function kpiTile(label, value, unit, note, r) {
-  return h('div', { class: 'kpi' }, h('span', { class: 'l' }, label), h('span', { class: `v tab ${r}-t` }, value, unit ? h('small', {}, unit) : null), h('span', { class: 'n' }, note));
+  return h('div', { class: `kpi k-${r}` }, h('div', { class: 'kh' }, h('span', { class: 'l' }, label), pill(r, r === 'ok' ? 'سليم' : r === 'warn' ? 'تنبيه' : 'حرج')), h('span', { class: `v tab ${r}-t` }, value, unit ? h('small', {}, unit) : null), h('span', { class: 'n' }, note));
+}
+// Score ring: the arc is the score out of 100; two ticks mark the «ممتثل» and «متابعة» bands.
+function scoreRing(score, grade) {
+  const NS = 'http://www.w3.org/2000/svg', R = 64, C = 2 * Math.PI * R;
+  const s = (tag, a, txt) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(a)) e.setAttribute(k, v); if (txt != null) e.textContent = txt; return e; };
+  const col = `var(--${grade === 'ok' ? 'live' : grade === 'warn' ? 'amber' : 'red'})`;
+  const svg = s('svg', { viewBox: '0 0 160 160', width: 160, height: 160, class: 'ring', role: 'img', 'aria-label': `مؤشر الامتثال ${nf.format(score)} من 100` });
+  svg.append(s('circle', { cx: 80, cy: 80, r: R, fill: 'none', stroke: 'var(--panel2)', 'stroke-width': 12 }));
+  svg.append(s('circle', { cx: 80, cy: 80, r: R, fill: 'none', stroke: col, 'stroke-width': 12, 'stroke-linecap': 'round', 'stroke-dasharray': `${(Math.max(0, Math.min(100, score)) / 100) * C} ${C}`, transform: 'rotate(-90 80 80)' }));
+  [st.cfg.warnBand, st.cfg.okBand].forEach((b) => { const ang = (b / 100) * 2 * Math.PI - Math.PI / 2; svg.append(s('line', { x1: 80 + (R - 9) * Math.cos(ang), y1: 80 + (R - 9) * Math.sin(ang), x2: 80 + (R + 9) * Math.cos(ang), y2: 80 + (R + 9) * Math.sin(ang), stroke: 'var(--ink)', 'stroke-width': 2, opacity: 0.55 })); });
+  svg.append(s('text', { x: 80, y: 88, 'text-anchor': 'middle', 'font-size': 34, 'font-weight': 600, fill: col, class: 'tab' }, nf.format(score)));
+  svg.append(s('text', { x: 80, y: 110, 'text-anchor': 'middle', 'font-size': 12, fill: 'var(--dim)' }, 'من 100'));
+  return svg;
 }
 
 // SPI / CPI line chart, earliest week on the right (RTL).
